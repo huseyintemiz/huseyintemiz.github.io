@@ -1,9 +1,17 @@
 
-# Spherical Harmonics in Gaussian Splats
+<!-- # Spherical Harmonics in Gaussian Splats -->
 
 ## 🔸 Why Use Spherical Harmonics in Gaussian Splats?
 
 When rendering 3D scenes using Gaussian splats, each point (or "splat") needs to represent not just **color**, but how that color **changes depending on the viewing direction**. Spherical harmonics allow encoding this angular variation compactly.
+
+<p align="center">
+    <img src="assets/images/post000_set-of-spherical-harmonics-mapped-to-the-surface-of-a-sphere.png" alt="Set of spherical harmonics mapped to the surface of a sphere" width="300"/>
+    <img src="assets/images/post000_Spherical_Harmonics.png" alt="Spherical Harmonics visualization" width="400"/>
+</p>
+<p align="center">
+    <em>Left: Spherical harmonics mapped to a sphere &nbsp;&nbsp;|&nbsp;&nbsp; Right: Spherical harmonics visualization</em>
+</p>
 
 This is important for achieving **photorealistic rendering** with effects like:
 - Specular highlights

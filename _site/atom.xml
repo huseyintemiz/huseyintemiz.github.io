@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Ephesus - Minimalist Jekyll Theme</title>
- <link href="https://huseyintemiz.github.io/atom.xml" rel="self"/>
- <link href="https://huseyintemiz.github.io/"/>
- <updated>2025-05-20T11:15:45+03:00</updated>
- <id>https://huseyintemiz.github.io</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2025-05-20T12:04:16+03:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Hüseyin Temiz</name>
    <email></email>
@@ -13,13 +13,19 @@
 
  
  <entry>
-   <title>Sample</title>
-   <link href="https://huseyintemiz.github.io/sample"/>
+   <title>Sample Math Latex Code</title>
+   <link href="http://localhost:4000/sample-math-latex-code"/>
    <updated>2025-05-20T00:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/sample</id>
-   <content type="html">&lt;h1 id=&quot;spherical-harmonics-in-gaussian-splats&quot;&gt;Spherical Harmonics in Gaussian Splats&lt;/h1&gt;
+   <id>http://localhost:4000/sample-math-latex-code</id>
+   <content type="html">&lt;!-- # Spherical Harmonics in Gaussian Splats --&gt;
 
-&lt;h2 id=&quot;-why-use-spherical-harmonics-in-gaussian-splats&quot;&gt;🔸 Why Use Spherical Harmonics in Gaussian Splats?&lt;/h2&gt;
+&lt;p&gt;This is experimental page. All contents are garbage.&lt;/p&gt;
+
+&lt;!-- ## 🔸 Why Use Spherical Harmonics in Gaussian Splats? --&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;assets/images/post000_set-of-spherical-harmonics-mapped-to-the-surface-of-a-sphere.png&quot; alt=&quot;Set of spherical harmonics mapped to the surface of a sphere&quot; width=&quot;400&quot; /&gt;
+&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;em&gt;Set of spherical harmonics mapped to the surface of a sphere&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;When rendering 3D scenes using Gaussian splats, each point (or “splat”) needs to represent not just &lt;strong&gt;color&lt;/strong&gt;, but how that color &lt;strong&gt;changes depending on the viewing direction&lt;/strong&gt;. Spherical harmonics allow encoding this angular variation compactly.&lt;/p&gt;
 
@@ -62,20 +68,80 @@
   &lt;li&gt;Compute the final color as a dot product:&lt;/li&gt;
 &lt;/ol&gt;
 
+\[C(v) = \sum_{l=0}^{L} \sum_{m=-l}^{l} c_{l,m} \cdot Y_{l,m}(v)\]
+
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;\(C(v)\) : The final color for the viewing direction \(v\).&lt;/li&gt;
+  &lt;li&gt;\(c_{l,m}\): The SH coefficients for each degree \(l\) and order \(m\).&lt;/li&gt;
+  &lt;li&gt;\(Y_{l,m}(v)\): The SH basis functions evaluated at the direction \(v\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-key-spherical-harmonics-equations&quot;&gt;🔸 Key Spherical Harmonics Equations&lt;/h2&gt;
+
+&lt;h3 id=&quot;sh-basis-functions&quot;&gt;SH Basis Functions&lt;/h3&gt;
+
+&lt;p&gt;The real-valued spherical harmonics basis functions are defined as:&lt;/p&gt;
+
+\[Y_{l}^{m}(\theta, \phi) = N_{l}^{m} \cdot P_{l}^{m}(\cos\theta) \cdot 
+\begin{cases}
+\sqrt{2} \sin(|m|\phi) &amp;amp; \text{if } m &amp;lt; 0 \\
+1 &amp;amp; \text{if } m = 0 \\
+\sqrt{2} \cos(m\phi) &amp;amp; \text{if } m &amp;gt; 0
+\end{cases}\]
+
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;\(\theta\) : inclination (angle from the z-axis)&lt;/li&gt;
+  &lt;li&gt;\(\phi\): azimuth (angle from the x-axis in the x-y plane)&lt;/li&gt;
+  &lt;li&gt;\(N_{l}^{m}\): normalization constant&lt;/li&gt;
+  &lt;li&gt;\(P_{l}^{m}\): associated Legendre polynomial&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;normalization-constant&quot;&gt;Normalization Constant&lt;/h3&gt;
+
+\[N_{l}^{m} = \sqrt{\frac{(2l+1)}{4\pi} \cdot \frac{(l - |m|)!}{(l + |m|)!}}\]
+
+&lt;h3 id=&quot;example-sh0-and-sh1&quot;&gt;Example: SH0 and SH1&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;SH0 (l=0, m=0):&lt;/strong&gt;
+  \(Y_0^0 = \frac{1}{2} \sqrt{\frac{1}{\pi}}\)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SH1 (l=1, m=-1,0,1):&lt;/strong&gt;
+  \(Y_1^{-1} = \sqrt{\frac{3}{4\pi}} \sin\theta \sin\phi\)
+  \(Y_1^{0} = \sqrt{\frac{3}{4\pi}} \cos\theta\)
+  \(Y_1^{1} = \sqrt{\frac{3}{4\pi}} \sin\theta \cos\phi\)
+    &lt;h2 id=&quot;-benefits-of-using-sh&quot;&gt;🔸 Benefits of Using SH&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Compact representation of angular variation.&lt;/li&gt;
+  &lt;li&gt;Efficient evaluation during rendering.&lt;/li&gt;
+  &lt;li&gt;Scalable to higher levels for more detail.&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  
  <entry>
    <title>Spherical Harmonics In Gaussian Splats</title>
-   <link href="https://huseyintemiz.github.io/spherical-harmonics-in-gaussian-splats"/>
+   <link href="http://localhost:4000/spherical-harmonics-in-gaussian-splats"/>
    <updated>2025-05-19T00:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/Spherical-Harmonics-in-Gaussian-Splats</id>
+   <id>http://localhost:4000/Spherical-Harmonics-in-Gaussian-Splats</id>
    <content type="html">
-&lt;h1 id=&quot;spherical-harmonics-in-gaussian-splats&quot;&gt;Spherical Harmonics in Gaussian Splats&lt;/h1&gt;
+&lt;!-- # Spherical Harmonics in Gaussian Splats --&gt;
 
 &lt;h2 id=&quot;-why-use-spherical-harmonics-in-gaussian-splats&quot;&gt;🔸 Why Use Spherical Harmonics in Gaussian Splats?&lt;/h2&gt;
 
 &lt;p&gt;When rendering 3D scenes using Gaussian splats, each point (or “splat”) needs to represent not just &lt;strong&gt;color&lt;/strong&gt;, but how that color &lt;strong&gt;changes depending on the viewing direction&lt;/strong&gt;. Spherical harmonics allow encoding this angular variation compactly.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;assets/images/post000_set-of-spherical-harmonics-mapped-to-the-surface-of-a-sphere.png&quot; alt=&quot;Set of spherical harmonics mapped to the surface of a sphere&quot; width=&quot;300&quot; /&gt;
+    &lt;img src=&quot;assets/images/post000_Spherical_Harmonics.png&quot; alt=&quot;Spherical Harmonics visualization&quot; width=&quot;400&quot; /&gt;
+&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;em&gt;Left: Spherical harmonics mapped to a sphere &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; Right: Spherical harmonics visualization&lt;/em&gt;
+&lt;/p&gt;
 
 &lt;p&gt;This is important for achieving &lt;strong&gt;photorealistic rendering&lt;/strong&gt; with effects like:&lt;/p&gt;
 &lt;ul&gt;
@@ -226,9 +292,9 @@
  
  <entry>
    <title>Ephesus Jekyll Blog Theme</title>
-   <link href="https://huseyintemiz.github.io/ephesus-jekyll-blog-theme/"/>
+   <link href="http://localhost:4000/ephesus-jekyll-blog-theme/"/>
    <updated>2021-09-22T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/Ephesus-Jekyll-Blog-Theme</id>
+   <id>http://localhost:4000/Ephesus-Jekyll-Blog-Theme</id>
    <content type="html">&lt;p&gt;Lorem markdownum nimiumque inutile ulterius tum fluctus arbore aethere in
 laqueosque lorisque tabuerit. Timor pectoraque vetus conspiceris donis arbitrium
 fecerat &lt;em&gt;ait dulci&lt;/em&gt; et reus vultumque ubi &lt;a href=&quot;http://una.net&quot;&gt;mittere&lt;/a&gt; cernunt
@@ -295,9 +361,9 @@ genitoris ad concutit.&lt;/p&gt;
  
  <entry>
    <title>Ephesus The Great Ancient City</title>
-   <link href="https://huseyintemiz.github.io/ephesus-the-great-ancient-city/"/>
+   <link href="http://localhost:4000/ephesus-the-great-ancient-city/"/>
    <updated>2021-09-21T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/ephesus-the-great-ancient-city</id>
+   <id>http://localhost:4000/ephesus-the-great-ancient-city</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -376,9 +442,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Elit in massa parturient a class condimentum suspendisse.</title>
-   <link href="https://huseyintemiz.github.io/elit-in-massa-parturient-a-class-condimentum-suspendisse/"/>
+   <link href="http://localhost:4000/elit-in-massa-parturient-a-class-condimentum-suspendisse/"/>
    <updated>2021-09-11T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/elit-in-massa-parturient-a-class-condimentum-suspendisse</id>
+   <id>http://localhost:4000/elit-in-massa-parturient-a-class-condimentum-suspendisse</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -457,9 +523,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Email Address Format, PHP filter_var Function And RFC 5321</title>
-   <link href="https://huseyintemiz.github.io/email-address-format-php-filter-var-function-and-rfc-5321/"/>
+   <link href="http://localhost:4000/email-address-format-php-filter-var-function-and-rfc-5321/"/>
    <updated>2021-08-27T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/email-address-format</id>
+   <id>http://localhost:4000/email-address-format</id>
    <content type="html">&lt;h1 id=&quot;proles-non-tamen-habet&quot;&gt;Proles non tamen habet&lt;/h1&gt;
 
 &lt;h2 id=&quot;epops-adfatur-admittitur-laedere&quot;&gt;Epops adfatur admittitur laedere&lt;/h2&gt;
@@ -527,9 +593,9 @@ Cocalus!&lt;/p&gt;
  
  <entry>
    <title>Binary Search Algorithm - C Programming Example</title>
-   <link href="https://huseyintemiz.github.io/binary-search-algorithm-c-programming-example/"/>
+   <link href="http://localhost:4000/binary-search-algorithm-c-programming-example/"/>
    <updated>2021-08-19T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/binary-search-algorithm-c-programming-example</id>
+   <id>http://localhost:4000/binary-search-algorithm-c-programming-example</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -611,9 +677,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Posuere sapien orci ipsum dolor parturient eu risus in orci.</title>
-   <link href="https://huseyintemiz.github.io/posuere-sapien-orci-ipsum-dolor-parturient-eu-risus-in-orci/"/>
+   <link href="http://localhost:4000/posuere-sapien-orci-ipsum-dolor-parturient-eu-risus-in-orci/"/>
    <updated>2021-07-28T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/sample-20</id>
+   <id>http://localhost:4000/sample-20</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -692,9 +758,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Vivamus neque nullam ridiculus posuere placerat parturient ullamcorper</title>
-   <link href="https://huseyintemiz.github.io/vivamus-neque-nullam-ridiculus-posuere-placerat-parturient-ullamcorpernone/"/>
+   <link href="http://localhost:4000/vivamus-neque-nullam-ridiculus-posuere-placerat-parturient-ullamcorpernone/"/>
    <updated>2021-07-23T03:00:00+03:00</updated>
-   <id>https://huseyintemiz.github.io/sample-19</id>
+   <id>http://localhost:4000/sample-19</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
