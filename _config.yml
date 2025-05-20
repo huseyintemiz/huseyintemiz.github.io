@@ -1,9 +1,9 @@
 # Site settings
-site: Ephesus
-title: Ephesus - Minimalist Jekyll Theme
-keywords: ephesus, blog
+site: Temiz.ai
+title: Temiz.ai Research Blog 
+keywords: research blog
 description: >-
-  Ephesus - Minimalist Jekyll Theme
+  Temiz.ai - Research blog of Huseyin Temiz.
 lang: en-US
 timezone:  Europe/Istanbul
 repo: https://github.com/onepase/Ephesus # site repo [optional]
