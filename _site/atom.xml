@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Ephesus - Minimalist Jekyll Theme</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2025-05-20T23:23:22+03:00</updated>
- <id>http://localhost:4000</id>
+ <link href="https://huseyintemiz.github.io/atom.xml" rel="self"/>
+ <link href="https://huseyintemiz.github.io/"/>
+ <updated>2025-05-20T23:31:08+03:00</updated>
+ <id>https://huseyintemiz.github.io</id>
  <author>
    <name>Hüseyin Temiz</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Sample Math Latex Code</title>
-   <link href="http://localhost:4000/sample-math-latex-code"/>
+   <link href="https://huseyintemiz.github.io/sample-math-latex-code"/>
    <updated>2025-05-20T00:00:00+03:00</updated>
-   <id>http://localhost:4000/sample-math-latex-code</id>
+   <id>https://huseyintemiz.github.io/sample-math-latex-code</id>
    <content type="html">&lt;!-- # Spherical Harmonics in Gaussian Splats --&gt;
 
 &lt;p&gt;This is experimental page. All contents are garbage.&lt;/p&gt;
@@ -125,9 +125,9 @@
  
  <entry>
    <title>Spherical Harmonics In Gaussian Splats</title>
-   <link href="http://localhost:4000/spherical-harmonics-in-gaussian-splats"/>
+   <link href="https://huseyintemiz.github.io/spherical-harmonics-in-gaussian-splats"/>
    <updated>2025-05-19T00:00:00+03:00</updated>
-   <id>http://localhost:4000/Spherical-Harmonics-in-Gaussian-Splats</id>
+   <id>https://huseyintemiz.github.io/Spherical-Harmonics-in-Gaussian-Splats</id>
    <content type="html">
 &lt;!-- # Spherical Harmonics in Gaussian Splats --&gt;
 
@@ -292,9 +292,9 @@
  
  <entry>
    <title>Ephesus Jekyll Blog Theme</title>
-   <link href="http://localhost:4000/ephesus-jekyll-blog-theme/"/>
+   <link href="https://huseyintemiz.github.io/ephesus-jekyll-blog-theme/"/>
    <updated>2021-09-22T03:00:00+03:00</updated>
-   <id>http://localhost:4000/Ephesus-Jekyll-Blog-Theme</id>
+   <id>https://huseyintemiz.github.io/Ephesus-Jekyll-Blog-Theme</id>
    <content type="html">&lt;p&gt;Lorem markdownum nimiumque inutile ulterius tum fluctus arbore aethere in
 laqueosque lorisque tabuerit. Timor pectoraque vetus conspiceris donis arbitrium
 fecerat &lt;em&gt;ait dulci&lt;/em&gt; et reus vultumque ubi &lt;a href=&quot;http://una.net&quot;&gt;mittere&lt;/a&gt; cernunt
@@ -361,9 +361,9 @@ genitoris ad concutit.&lt;/p&gt;
  
  <entry>
    <title>Ephesus The Great Ancient City</title>
-   <link href="http://localhost:4000/ephesus-the-great-ancient-city/"/>
+   <link href="https://huseyintemiz.github.io/ephesus-the-great-ancient-city/"/>
    <updated>2021-09-21T03:00:00+03:00</updated>
-   <id>http://localhost:4000/ephesus-the-great-ancient-city</id>
+   <id>https://huseyintemiz.github.io/ephesus-the-great-ancient-city</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -442,9 +442,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Elit in massa parturient a class condimentum suspendisse.</title>
-   <link href="http://localhost:4000/elit-in-massa-parturient-a-class-condimentum-suspendisse/"/>
+   <link href="https://huseyintemiz.github.io/elit-in-massa-parturient-a-class-condimentum-suspendisse/"/>
    <updated>2021-09-11T03:00:00+03:00</updated>
-   <id>http://localhost:4000/elit-in-massa-parturient-a-class-condimentum-suspendisse</id>
+   <id>https://huseyintemiz.github.io/elit-in-massa-parturient-a-class-condimentum-suspendisse</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -523,9 +523,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Email Address Format, PHP filter_var Function And RFC 5321</title>
-   <link href="http://localhost:4000/email-address-format-php-filter-var-function-and-rfc-5321/"/>
+   <link href="https://huseyintemiz.github.io/email-address-format-php-filter-var-function-and-rfc-5321/"/>
    <updated>2021-08-27T03:00:00+03:00</updated>
-   <id>http://localhost:4000/email-address-format</id>
+   <id>https://huseyintemiz.github.io/email-address-format</id>
    <content type="html">&lt;h1 id=&quot;proles-non-tamen-habet&quot;&gt;Proles non tamen habet&lt;/h1&gt;
 
 &lt;h2 id=&quot;epops-adfatur-admittitur-laedere&quot;&gt;Epops adfatur admittitur laedere&lt;/h2&gt;
@@ -593,9 +593,9 @@ Cocalus!&lt;/p&gt;
  
  <entry>
    <title>Binary Search Algorithm - C Programming Example</title>
-   <link href="http://localhost:4000/binary-search-algorithm-c-programming-example/"/>
+   <link href="https://huseyintemiz.github.io/binary-search-algorithm-c-programming-example/"/>
    <updated>2021-08-19T03:00:00+03:00</updated>
-   <id>http://localhost:4000/binary-search-algorithm-c-programming-example</id>
+   <id>https://huseyintemiz.github.io/binary-search-algorithm-c-programming-example</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -677,9 +677,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Posuere sapien orci ipsum dolor parturient eu risus in orci.</title>
-   <link href="http://localhost:4000/posuere-sapien-orci-ipsum-dolor-parturient-eu-risus-in-orci/"/>
+   <link href="https://huseyintemiz.github.io/posuere-sapien-orci-ipsum-dolor-parturient-eu-risus-in-orci/"/>
    <updated>2021-07-28T03:00:00+03:00</updated>
-   <id>http://localhost:4000/sample-20</id>
+   <id>https://huseyintemiz.github.io/sample-20</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
@@ -758,9 +758,9 @@ carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
  
  <entry>
    <title>Vivamus neque nullam ridiculus posuere placerat parturient ullamcorper</title>
-   <link href="http://localhost:4000/vivamus-neque-nullam-ridiculus-posuere-placerat-parturient-ullamcorpernone/"/>
+   <link href="https://huseyintemiz.github.io/vivamus-neque-nullam-ridiculus-posuere-placerat-parturient-ullamcorpernone/"/>
    <updated>2021-07-23T03:00:00+03:00</updated>
-   <id>http://localhost:4000/sample-19</id>
+   <id>https://huseyintemiz.github.io/sample-19</id>
    <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
 generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
 mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
