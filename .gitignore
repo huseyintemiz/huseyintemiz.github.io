@@ -1,0 +1,3 @@
+bundle exec jekyll serve --baseurl="/huseyintemiz.github.io"
+
+.jekyll-cache/
