@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Ephesus - Minimalist Jekyll Theme</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2025-05-20T09:12:24+03:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Hüseyin Temiz</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Sample</title>
+   <link href="http://localhost:4000/sample"/>
+   <updated>2025-05-20T00:00:00+03:00</updated>
+   <id>http://localhost:4000/sample</id>
+   <content type="html">&lt;h1 id=&quot;spherical-harmonics-in-gaussian-splats&quot;&gt;Spherical Harmonics in Gaussian Splats&lt;/h1&gt;
+
+&lt;h2 id=&quot;-why-use-spherical-harmonics-in-gaussian-splats&quot;&gt;🔸 Why Use Spherical Harmonics in Gaussian Splats?&lt;/h2&gt;
+
+&lt;p&gt;When rendering 3D scenes using Gaussian splats, each point (or “splat”) needs to represent not just &lt;strong&gt;color&lt;/strong&gt;, but how that color &lt;strong&gt;changes depending on the viewing direction&lt;/strong&gt;. Spherical harmonics allow encoding this angular variation compactly.&lt;/p&gt;
+
+&lt;p&gt;This is important for achieving &lt;strong&gt;photorealistic rendering&lt;/strong&gt; with effects like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Specular highlights&lt;/li&gt;
+  &lt;li&gt;Soft shadows&lt;/li&gt;
+  &lt;li&gt;View-dependent lighting changes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-what-are-spherical-harmonics&quot;&gt;🔸 What Are Spherical Harmonics?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Spherical Harmonics (SH)&lt;/strong&gt; are a series of &lt;strong&gt;orthogonal basis functions&lt;/strong&gt; defined on the surface of a sphere. You can think of them as the 3D analog of &lt;strong&gt;Fourier series&lt;/strong&gt; for functions on a sphere.&lt;/p&gt;
+
+&lt;p&gt;They are indexed by:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Degree (l)&lt;/strong&gt;: controls the frequency (higher means more detail)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Order (m)&lt;/strong&gt;: varies from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-l&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+l&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example-levels&quot;&gt;Example Levels:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;SH level 0 (SH0):&lt;/strong&gt; Only constant color (no view dependence)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SH level 1 (SH1):&lt;/strong&gt; Basic directional lighting (like Lambertian)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SH level 2 or 3+:&lt;/strong&gt; Captures more complex angular dependencies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-sh-in-gaussian-splatting&quot;&gt;🔸 SH in Gaussian Splatting&lt;/h2&gt;
+
+&lt;p&gt;Each 3D Gaussian stores:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Position, scale, rotation, opacity&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Spherical Harmonics coefficients for RGB appearance&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Instead of storing just a single RGB color, we store a &lt;strong&gt;set of SH coefficients per color channel&lt;/strong&gt;. When rendering:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Compute the &lt;strong&gt;viewing direction&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt; for each Gaussian.&lt;/li&gt;
+  &lt;li&gt;Evaluate the &lt;strong&gt;SH basis functions&lt;/strong&gt; at direction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt; to get a vector &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SH_basis(v)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Compute the final color as a dot product:&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Spherical</title>
+   <link href="http://localhost:4000/spherical"/>
+   <updated>2025-05-19T00:00:00+03:00</updated>
+   <id>http://localhost:4000/spherical</id>
+   <content type="html">
+&lt;h1 id=&quot;spherical-harmonics-in-gaussian-splats&quot;&gt;Spherical Harmonics in Gaussian Splats&lt;/h1&gt;
+
+&lt;h2 id=&quot;-why-use-spherical-harmonics-in-gaussian-splats&quot;&gt;🔸 Why Use Spherical Harmonics in Gaussian Splats?&lt;/h2&gt;
+
+&lt;p&gt;When rendering 3D scenes using Gaussian splats, each point (or “splat”) needs to represent not just &lt;strong&gt;color&lt;/strong&gt;, but how that color &lt;strong&gt;changes depending on the viewing direction&lt;/strong&gt;. Spherical harmonics allow encoding this angular variation compactly.&lt;/p&gt;
+
+&lt;p&gt;This is important for achieving &lt;strong&gt;photorealistic rendering&lt;/strong&gt; with effects like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Specular highlights&lt;/li&gt;
+  &lt;li&gt;Soft shadows&lt;/li&gt;
+  &lt;li&gt;View-dependent lighting changes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-what-are-spherical-harmonics&quot;&gt;🔸 What Are Spherical Harmonics?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Spherical Harmonics (SH)&lt;/strong&gt; are a series of &lt;strong&gt;orthogonal basis functions&lt;/strong&gt; defined on the surface of a sphere. You can think of them as the 3D analog of &lt;strong&gt;Fourier series&lt;/strong&gt; for functions on a sphere.&lt;/p&gt;
+
+&lt;p&gt;They are indexed by:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Degree (l)&lt;/strong&gt;: controls the frequency (higher means more detail)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Order (m)&lt;/strong&gt;: varies from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-l&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+l&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example-levels&quot;&gt;Example Levels:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;SH level 0 (SH0):&lt;/strong&gt; Only constant color (no view dependence)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SH level 1 (SH1):&lt;/strong&gt; Basic directional lighting (like Lambertian)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SH level 2 or 3+:&lt;/strong&gt; Captures more complex angular dependencies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-sh-in-gaussian-splatting&quot;&gt;🔸 SH in Gaussian Splatting&lt;/h2&gt;
+
+&lt;p&gt;Each 3D Gaussian stores:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Position, scale, rotation, opacity&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Spherical Harmonics coefficients for RGB appearance&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Instead of storing just a single RGB color, we store a &lt;strong&gt;set of SH coefficients per color channel&lt;/strong&gt;. When rendering:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Compute the &lt;strong&gt;viewing direction&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt; for each Gaussian.&lt;/li&gt;
+  &lt;li&gt;Evaluate the &lt;strong&gt;SH basis functions&lt;/strong&gt; at direction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt; to get a vector &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SH_basis(v)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Compute the final color as a dot product:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;color = Σ (c_i * SH_basis_i(v))   for i = 1..n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c_i&lt;/code&gt; are SH coefficients.&lt;/p&gt;
+
+&lt;h2 id=&quot;-sh-level-examples&quot;&gt;🔸 SH Level Examples&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;SH Level&lt;/th&gt;
+      &lt;th&gt;# Coefficients (per color)&lt;/th&gt;
+      &lt;th&gt;What it Captures&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Constant color&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Directional diffuse lighting&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;Soft shadows, simple specular&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;Rich angular detail&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;So if SH=2:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;You store 9 SH coefficients per color channel (27 total for RGB).&lt;/li&gt;
+  &lt;li&gt;You can model how color changes with view angle in a smooth and efficient way.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-visual-example-simplified&quot;&gt;🔸 Visual Example (Simplified)&lt;/h2&gt;
+
+&lt;p&gt;Imagine a glossy red ball:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Without SH (SH=0):&lt;/strong&gt; The ball is flat red from all directions.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;With SH=1:&lt;/strong&gt; The ball appears brighter on the side facing the light source.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;With SH=2+:&lt;/strong&gt; The ball has soft reflections and looks more realistic as you move the camera.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-dummy-python-code-example&quot;&gt;🔸 Dummy Python Code Example&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.special&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sph_harm&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Dummy view direction (theta, phi) in spherical coordinates
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# angle from z-axis
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# angle from x-axis in x-y plane
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Compute SH basis up to degree l=2
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compute_sh_basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;basis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Y_lm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sph_harm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;real&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Only real part used in graphics
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y_lm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Example SH coefficients for RGB (assuming SH2 = 9 coeffs per channel)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sh_coeffs_r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sh_coeffs_g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sh_coeffs_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Evaluate SH basis
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sh_basis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compute_sh_basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Final RGB color (dot product of SH coefficients and SH basis)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sh_coeffs_r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sh_basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sh_coeffs_g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sh_basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sh_coeffs_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sh_basis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RGB color from SH: R=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, G=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, B=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This code shows:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;How SH basis functions are computed using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scipy.special.sph_harm&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;How SH coefficients are applied to compute view-dependent color&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;-summary&quot;&gt;🔸 Summary&lt;/h2&gt;
+
+&lt;p&gt;In &lt;strong&gt;Gaussian Splatting&lt;/strong&gt;, Spherical Harmonics:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Encode how color/appearance changes with view direction&lt;/li&gt;
+  &lt;li&gt;Provide a compact way to achieve realistic rendering&lt;/li&gt;
+  &lt;li&gt;Are used per-splat (each Gaussian has its own SH coefficients)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can &lt;strong&gt;trade off quality vs speed&lt;/strong&gt; by choosing the SH level (e.g., SH=0 for fast rendering, SH=2+ for better realism).&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ephesus Jekyll Blog Theme</title>
+   <link href="http://localhost:4000/ephesus-jekyll-blog-theme/"/>
+   <updated>2021-09-22T03:00:00+03:00</updated>
+   <id>http://localhost:4000/Ephesus-Jekyll-Blog-Theme</id>
+   <content type="html">&lt;p&gt;Lorem markdownum nimiumque inutile ulterius tum fluctus arbore aethere in
+laqueosque lorisque tabuerit. Timor pectoraque vetus conspiceris donis arbitrium
+fecerat &lt;em&gt;ait dulci&lt;/em&gt; et reus vultumque ubi &lt;a href=&quot;http://una.net&quot;&gt;mittere&lt;/a&gt; cernunt
+hosti.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//Function declarations&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;is_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;goldbach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Enter even number:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;scanf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;goldbach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Incorrect number!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;nec-partus-ferox-veniam-serpentis-servet-viro&quot;&gt;Nec partus ferox veniam serpentis servet viro&lt;/h2&gt;
+
+&lt;p&gt;Sed &lt;strong&gt;premunt turba verum&lt;/strong&gt; circueunt ex inmurmurat confundit area premente
+&lt;a href=&quot;http://spectante-mulcet.com/magna&quot;&gt;unus&lt;/a&gt;, qui resupinus facit adsuetam. Dixit
+sic &lt;em&gt;tandemque vultus aniles&lt;/em&gt; fuerat vulgares removete arva silet, mutabitur
+ramos omnes absens Idan vallibus volucrem. Feremus loquuntur furit &lt;strong&gt;rerum
+pectora violata&lt;/strong&gt;, aevo &lt;a href=&quot;http://laborum.net/modo&quot;&gt;unda condita&lt;/a&gt; non bracchia
+viscera. &lt;em&gt;Candida saepe&lt;/em&gt; rettulit tegumen &lt;strong&gt;abest de si&lt;/strong&gt;, et procul, hoc qui
+liquidarum, totidem pars pavidum filia iam.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Aulaea saevam&lt;/li&gt;
+  &lt;li&gt;Animam conquerar&lt;/li&gt;
+  &lt;li&gt;Lycormas fatemur germanam&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fata-huc-cessura-secant&quot;&gt;Fata huc cessura secant&lt;/h2&gt;
+
+&lt;p&gt;Est urbem ferrum gratia altera? In nec profundo valuit vidit, ira o adhuc
+convicia. Quoque simul, nisi ausis equus tum veluti: gener. Lacu abesset pinnas,
+albaque, esto, quem quod.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Deceant tormenta nomine&lt;/li&gt;
+  &lt;li&gt;Furti visi honorati Dardanio profundo genus superos&lt;/li&gt;
+  &lt;li&gt;Cum cadi fundit accensus silentibus ipsa ambiguum&lt;/li&gt;
+  &lt;li&gt;Cogis data sparsosque falleret nepos de sedem&lt;/li&gt;
+  &lt;li&gt;Ingeminat falcato somno iratus fac paterna&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Sua communiter&lt;/strong&gt; hoc exire iurares usus, &lt;em&gt;percusso iunonis tibi&lt;/em&gt;? Ubi magna
+crinem adsueta ancipitesque sitim; et genus ferumque? Quod &lt;strong&gt;lupos tutus&lt;/strong&gt;, cum
+insania &lt;a href=&quot;http://sparserat.org/cinyras&quot;&gt;tanta Cephalum&lt;/a&gt; harundine eligit
+genitoris ad concutit.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ephesus The Great Ancient City</title>
+   <link href="http://localhost:4000/ephesus-the-great-ancient-city/"/>
+   <updated>2021-09-21T03:00:00+03:00</updated>
+   <id>http://localhost:4000/ephesus-the-great-ancient-city</id>
+   <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
+generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
+mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
+nostro&lt;/strong&gt;, ne ruris &lt;em&gt;in deas extrema&lt;/em&gt;. Thebaides crimina, tu dixerat eripiet
+quiescere animae, pervenientia fuit furta sacrata illam, dabat. Quod munera
+monstra rimas ultra cunctos.&lt;/p&gt;
+
+&lt;p&gt;Incipit pars telis quod colebat tenet Iovis, Perseus et non Hectoris caesae temperat tetigere pulvis? Phaethonteos avus Asopida mansit proelia quamquam furoris: fuit Haemum functa non ferarum vincat &lt;em&gt;pretium te gloria&lt;/em&gt; ignibus.&lt;/p&gt;
+
+&lt;h2 id=&quot;potum-maius-urbem&quot;&gt;Potum maius urbem&lt;/h2&gt;
+
+&lt;p&gt;Polydori arvis. Quoniam faciesque dona plus Iasone &lt;strong&gt;credas&lt;/strong&gt;: et novem recipit
+praeceps desint: teneat naribus. &lt;a href=&quot;http://fierent.net/miserrimasecreta&quot;&gt;Athamanas
+Cupido&lt;/a&gt;, ureret gradere adapertaque nacta
+spargere pater et &lt;a href=&quot;http://nocte-conclamat.org/indiciique-micant&quot;&gt;fata&lt;/a&gt; ferrove
+&lt;strong&gt;et&lt;/strong&gt; loqui essem Tegeaea varios leviter. Et nymphis in exhibita villo!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ephesus.jpg&quot; alt=&quot;Ephesus&quot; title=&quot;Ephesus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sacra erat cuncta. Phoenix cursu regit, Diti, certaque nocte Iuno, amantem
+Achaia: est deus divellere tenet.&lt;/p&gt;
+
+&lt;h2 id=&quot;clara-poterant-caret&quot;&gt;Clara poterant caret&lt;/h2&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Elit in massa parturient a class condimentum suspendisse.</title>
+   <link href="http://localhost:4000/elit-in-massa-parturient-a-class-condimentum-suspendisse/"/>
+   <updated>2021-09-11T03:00:00+03:00</updated>
+   <id>http://localhost:4000/elit-in-massa-parturient-a-class-condimentum-suspendisse</id>
+   <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
+generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
+mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
+nostro&lt;/strong&gt;, ne ruris &lt;em&gt;in deas extrema&lt;/em&gt;. Thebaides crimina, tu dixerat eripiet
+quiescere animae, pervenientia fuit furta sacrata illam, dabat. Quod munera
+monstra rimas ultra cunctos.&lt;/p&gt;
+
+&lt;p&gt;Incipit pars telis quod colebat tenet Iovis, Perseus et non Hectoris caesae temperat tetigere pulvis? Phaethonteos avus Asopida mansit proelia quamquam furoris: fuit Haemum functa non ferarum vincat &lt;em&gt;pretium te gloria&lt;/em&gt; ignibus.&lt;/p&gt;
+
+&lt;h2 id=&quot;potum-maius-urbem&quot;&gt;Potum maius urbem&lt;/h2&gt;
+
+&lt;p&gt;Polydori arvis. Quoniam faciesque dona plus Iasone &lt;strong&gt;credas&lt;/strong&gt;: et novem recipit
+praeceps desint: teneat naribus. &lt;a href=&quot;http://fierent.net/miserrimasecreta&quot;&gt;Athamanas
+Cupido&lt;/a&gt;, ureret gradere adapertaque nacta
+spargere pater et &lt;a href=&quot;http://nocte-conclamat.org/indiciique-micant&quot;&gt;fata&lt;/a&gt; ferrove
+&lt;strong&gt;et&lt;/strong&gt; loqui essem Tegeaea varios leviter. Et nymphis in exhibita villo!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ephesus.jpg&quot; alt=&quot;Ephesus&quot; title=&quot;Ephesus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sacra erat cuncta. Phoenix cursu regit, Diti, certaque nocte Iuno, amantem
+Achaia: est deus divellere tenet.&lt;/p&gt;
+
+&lt;h2 id=&quot;clara-poterant-caret&quot;&gt;Clara poterant caret&lt;/h2&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Email Address Format, PHP filter_var Function And RFC 5321</title>
+   <link href="http://localhost:4000/email-address-format-php-filter-var-function-and-rfc-5321/"/>
+   <updated>2021-08-27T03:00:00+03:00</updated>
+   <id>http://localhost:4000/email-address-format</id>
+   <content type="html">&lt;h1 id=&quot;proles-non-tamen-habet&quot;&gt;Proles non tamen habet&lt;/h1&gt;
+
+&lt;h2 id=&quot;epops-adfatur-admittitur-laedere&quot;&gt;Epops adfatur admittitur laedere&lt;/h2&gt;
+
+&lt;p&gt;Lorem markdownum Leucothoeque errore maturus bracchia, nova atria, non more
+hostem umbra metuque, turribus. Nostra prato &lt;strong&gt;vitae aevo Cycneia&lt;/strong&gt; undis; fuit
+ille, inque. Te nunc. Iamque ferens haut nec fruticosa quae summoque officio
+trunco faces. Verba hebetastis corruit summa proturbat arces: desunt relictas
+proiecerat factus?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Est erant labores submersum qui adspicias nectare&lt;/li&gt;
+  &lt;li&gt;Ratis insistere cucurri&lt;/li&gt;
+  &lt;li&gt;Deerit arces&lt;/li&gt;
+  &lt;li&gt;Mei mole iunctura recessit mater auctor silvasque&lt;/li&gt;
+  &lt;li&gt;Urbe effusus sunt praepetis&lt;/li&gt;
+  &lt;li&gt;Possunt narratur quoque qualia praecipue deos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Silvae saxa colunt de saepe iubentem remotus sacra, tot acumina sorores, mihi!
+&lt;a href=&quot;#quo&quot;&gt;Oravit tolli&lt;/a&gt; mergit; &lt;strong&gt;inobservatus nitor niveis&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;h2 id=&quot;quinquennem-mihi-obliquaque-terrae-ab-miserere-cuspide&quot;&gt;Quinquennem mihi obliquaque terrae ab miserere cuspide&lt;/h2&gt;
+
+&lt;p&gt;Neque calidumque inguina sui aestuat gemino abstulit tendens tamen: versant
+dicentem tormenta tertius subigebant foedere. Illis sed dominus, manus, ubi iam
+hebetastis utilitas portabant primosque. O saevum &lt;em&gt;avi&lt;/em&gt; potest &lt;a href=&quot;#pretium&quot;&gt;sed
+nabat&lt;/a&gt; currere confodit &lt;em&gt;tollite his separat&lt;/em&gt;. Tenebrisque manus;
+opifex servitque iuvenem tamen?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Fit figis praeterita viriles arbor&lt;/li&gt;
+  &lt;li&gt;Et petebar hi manus&lt;/li&gt;
+  &lt;li&gt;Humum maiorque caecisque conticuit erat naris coniecto&lt;/li&gt;
+  &lt;li&gt;Perque vagas et precanti potens inopes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Fiant ait dixit pede Pindo laborum. Tamen et ex sacrum iacentes; nais aequor,
+amor pavent est! A cladis a &lt;strong&gt;tu ne lecti&lt;/strong&gt;, nec, iam secuti tibi. Frugiferas
+cacumen &lt;strong&gt;his&lt;/strong&gt;: tinxit lunam felix laborem cavernas inter.&lt;/p&gt;
+
+&lt;p&gt;Quae ima ictus: homine suo fores rediit caelo, &lt;a href=&quot;#exigit&quot;&gt;ad Iuno&lt;/a&gt;, diu inde
+nostro. Frondes caerula de iaculum pro nobilis unda. Ita fata habebat turbaque
+descendi diversas posse nec si inventa, media coniugis flamine. Misit et meus
+Cocalus!&lt;/p&gt;
+
+&lt;p&gt;Fiant ait dixit pede Pindo laborum. Tamen et ex sacrum iacentes; nais aequor,
+amor pavent est! A cladis a &lt;strong&gt;tu ne lecti&lt;/strong&gt;, nec, iam secuti tibi. Frugiferas
+cacumen &lt;strong&gt;his&lt;/strong&gt;: tinxit lunam felix laborem cavernas inter.&lt;/p&gt;
+
+&lt;p&gt;Quae ima ictus: homine suo fores rediit caelo, &lt;a href=&quot;#exigit&quot;&gt;ad Iuno&lt;/a&gt;, diu inde
+nostro. Frondes caerula de iaculum pro nobilis unda. Ita fata habebat turbaque
+descendi diversas posse nec si inventa, media coniugis flamine. Misit et meus
+Cocalus!
+Fiant ait dixit pede Pindo laborum. Tamen et ex sacrum iacentes; nais aequor,
+amor pavent est! A cladis a &lt;strong&gt;tu ne lecti&lt;/strong&gt;, nec, iam secuti tibi. Frugiferas
+cacumen &lt;strong&gt;his&lt;/strong&gt;: tinxit lunam felix laborem cavernas inter.&lt;/p&gt;
+
+&lt;p&gt;Quae ima ictus: homine suo fores rediit caelo, &lt;a href=&quot;#exigit&quot;&gt;ad Iuno&lt;/a&gt;, diu inde
+nostro. Frondes caerula de iaculum pro nobilis unda. Ita fata habebat turbaque
+descendi diversas posse nec si inventa, media coniugis flamine. Misit et meus
+Cocalus!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Binary Search Algorithm - C Programming Example</title>
+   <link href="http://localhost:4000/binary-search-algorithm-c-programming-example/"/>
+   <updated>2021-08-19T03:00:00+03:00</updated>
+   <id>http://localhost:4000/binary-search-algorithm-c-programming-example</id>
+   <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
+generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
+mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
+nostro&lt;/strong&gt;, ne ruris &lt;em&gt;in deas extrema&lt;/em&gt;. Thebaides crimina, tu dixerat eripiet
+quiescere animae, pervenientia fuit furta sacrata illam, dabat. Quod munera
+monstra rimas ultra cunctos.&lt;/p&gt;
+
+&lt;p&gt;Incipit pars telis quod colebat tenet Iovis, Perseus et non Hectoris caesae temperat tetigere pulvis? Phaethonteos avus Asopida mansit proelia quamquam furoris: fuit Haemum functa non ferarum vincat &lt;em&gt;pretium te gloria&lt;/em&gt; ignibus.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;   	  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flag&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;         &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;low&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;flag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Founded: %d &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not Found!&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;potum-maius-urbem&quot;&gt;Potum maius urbem&lt;/h2&gt;
+
+&lt;p&gt;Polydori arvis. Quoniam faciesque dona plus Iasone &lt;strong&gt;credas&lt;/strong&gt;: et novem recipit
+praeceps desint: teneat naribus. &lt;a href=&quot;http://fierent.net/miserrimasecreta&quot;&gt;Athamanas
+Cupido&lt;/a&gt;, ureret gradere adapertaque nacta
+spargere pater et &lt;a href=&quot;http://nocte-conclamat.org/indiciique-micant&quot;&gt;fata&lt;/a&gt; ferrove
+&lt;strong&gt;et&lt;/strong&gt; loqui essem Tegeaea varios leviter. Et nymphis in exhibita villo!&lt;/p&gt;
+
+&lt;p&gt;Sacra erat cuncta. Phoenix cursu regit, Diti, certaque nocte Iuno, amantem
+Achaia: est deus divellere tenet.&lt;/p&gt;
+
+&lt;h2 id=&quot;clara-poterant-caret&quot;&gt;Clara poterant caret&lt;/h2&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Posuere sapien orci ipsum dolor parturient eu risus in orci.</title>
+   <link href="http://localhost:4000/posuere-sapien-orci-ipsum-dolor-parturient-eu-risus-in-orci/"/>
+   <updated>2021-07-28T03:00:00+03:00</updated>
+   <id>http://localhost:4000/sample-20</id>
+   <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
+generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
+mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
+nostro&lt;/strong&gt;, ne ruris &lt;em&gt;in deas extrema&lt;/em&gt;. Thebaides crimina, tu dixerat eripiet
+quiescere animae, pervenientia fuit furta sacrata illam, dabat. Quod munera
+monstra rimas ultra cunctos.&lt;/p&gt;
+
+&lt;p&gt;Incipit pars telis quod colebat tenet Iovis, Perseus et non Hectoris caesae temperat tetigere pulvis? Phaethonteos avus Asopida mansit proelia quamquam furoris: fuit Haemum functa non ferarum vincat &lt;em&gt;pretium te gloria&lt;/em&gt; ignibus.&lt;/p&gt;
+
+&lt;h2 id=&quot;potum-maius-urbem&quot;&gt;Potum maius urbem&lt;/h2&gt;
+
+&lt;p&gt;Polydori arvis. Quoniam faciesque dona plus Iasone &lt;strong&gt;credas&lt;/strong&gt;: et novem recipit
+praeceps desint: teneat naribus. &lt;a href=&quot;http://fierent.net/miserrimasecreta&quot;&gt;Athamanas
+Cupido&lt;/a&gt;, ureret gradere adapertaque nacta
+spargere pater et &lt;a href=&quot;http://nocte-conclamat.org/indiciique-micant&quot;&gt;fata&lt;/a&gt; ferrove
+&lt;strong&gt;et&lt;/strong&gt; loqui essem Tegeaea varios leviter. Et nymphis in exhibita villo!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ephesus.jpg&quot; alt=&quot;Ephesus&quot; title=&quot;Ephesus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sacra erat cuncta. Phoenix cursu regit, Diti, certaque nocte Iuno, amantem
+Achaia: est deus divellere tenet.&lt;/p&gt;
+
+&lt;h2 id=&quot;clara-poterant-caret&quot;&gt;Clara poterant caret&lt;/h2&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Vivamus neque nullam ridiculus posuere placerat parturient ullamcorper</title>
+   <link href="http://localhost:4000/vivamus-neque-nullam-ridiculus-posuere-placerat-parturient-ullamcorpernone/"/>
+   <updated>2021-07-23T03:00:00+03:00</updated>
+   <id>http://localhost:4000/sample-19</id>
+   <content type="html">&lt;p&gt;Lorem markdownum feriam: vir, vulnere cum postquam ocius, ecce. Exsangui totiens
+generis &lt;a href=&quot;http://www.fertur.io/aeacidis&quot;&gt;Iuppiter&lt;/a&gt; dederunt cerva refoventque,
+mea nulla secessit modo et. Hospes &lt;strong&gt;felices stetimusque&lt;/strong&gt; erat: &lt;strong&gt;Niobe
+nostro&lt;/strong&gt;, ne ruris &lt;em&gt;in deas extrema&lt;/em&gt;. Thebaides crimina, tu dixerat eripiet
+quiescere animae, pervenientia fuit furta sacrata illam, dabat. Quod munera
+monstra rimas ultra cunctos.&lt;/p&gt;
+
+&lt;p&gt;Incipit pars telis quod colebat tenet Iovis, Perseus et non Hectoris caesae temperat tetigere pulvis? Phaethonteos avus Asopida mansit proelia quamquam furoris: fuit Haemum functa non ferarum vincat &lt;em&gt;pretium te gloria&lt;/em&gt; ignibus.&lt;/p&gt;
+
+&lt;h2 id=&quot;potum-maius-urbem&quot;&gt;Potum maius urbem&lt;/h2&gt;
+
+&lt;p&gt;Polydori arvis. Quoniam faciesque dona plus Iasone &lt;strong&gt;credas&lt;/strong&gt;: et novem recipit
+praeceps desint: teneat naribus. &lt;a href=&quot;http://fierent.net/miserrimasecreta&quot;&gt;Athamanas
+Cupido&lt;/a&gt;, ureret gradere adapertaque nacta
+spargere pater et &lt;a href=&quot;http://nocte-conclamat.org/indiciique-micant&quot;&gt;fata&lt;/a&gt; ferrove
+&lt;strong&gt;et&lt;/strong&gt; loqui essem Tegeaea varios leviter. Et nymphis in exhibita villo!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ephesus.jpg&quot; alt=&quot;Ephesus&quot; title=&quot;Ephesus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sacra erat cuncta. Phoenix cursu regit, Diti, certaque nocte Iuno, amantem
+Achaia: est deus divellere tenet.&lt;/p&gt;
+
+&lt;h2 id=&quot;clara-poterant-caret&quot;&gt;Clara poterant caret&lt;/h2&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+
+&lt;p&gt;Iungimus solis, est Inachides haut orbataque sedebat, tamen Crathis crinita
+parentem. Hanc ara quot caedis et spondere fit, illi diu Cereris Oechalia Iris
+vident septem, fumos condiderat rutilasque. Tenent instrumenta nudaverat dicta.
+Et et curis: quod Arcades ipsa: vellet, altius non madidos numina in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Marmor regina Ionium elisa data Talibus rogat&lt;/li&gt;
+  &lt;li&gt;Novi nosterque hac perque poenam exemplis&lt;/li&gt;
+  &lt;li&gt;Finemque nitidis alteriusque odiique aspicit Tartessia est&lt;/li&gt;
+  &lt;li&gt;Iuvenum nostri alipedi&lt;/li&gt;
+  &lt;li&gt;Quae remorata et arto silvestre fidae adhuc&lt;/li&gt;
+  &lt;li&gt;Cornua altus intrat os vocant regia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Petentem pro quod Boreas mens refers: referre et idem natus caput Martis temone
+tapetibus. Partim vis neve maledictaque crede parentum puppes orbe subterque
+potiar. Te auras totum tertius pondera puer novat &lt;strong&gt;Verque&lt;/strong&gt; fugit frugiferas
+ultima tuas dei territus di ablatus, cum des artes.&lt;/p&gt;
+
+&lt;p&gt;Socium est facti est enim neve patris facto Laertaque formam. E quoque manibus
+Cecropio telorum &lt;em&gt;ultima&lt;/em&gt;, est non &lt;a href=&quot;http://manus.io/est&quot;&gt;est&lt;/a&gt;, sim desiluit
+solida; fecit. Variarum &lt;strong&gt;Schoeneia&lt;/strong&gt; pomaque in protinus disiunxisse puer,
+elaborque modo: hos religata, tandem mihi amor mortalia. Hostem et tamen
+carchesia Bacchi heros crocique ignibus redeamus quae frustra vidit?&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="light">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Sample - Ephesus - Minimalist Jekyll Theme</title>
+		<meta name="description" content="Ephesus - Minimalist Jekyll Theme">
+		<meta name="keywords" content="">
+		<base href="http://localhost:4000" />
+		
+    	<meta content="2025-05-20T00:00:00+03:00" property="article:published_time">
+    	<meta content="http://localhost:4000/about/" property="article:author">
+  		
+		<meta property="og:site_name" content="Ephesus - Minimalist Jekyll Theme">
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://localhost:4000/sample"/>
+		<meta property="og:title" content="Sample - Ephesus - Minimalist Jekyll Theme" />
+		<meta property="og:description" content="Ephesus - Minimalist Jekyll Theme" />
+		<meta property="og:image" content="http://localhost:4000/assets/images/favicon.png"/>
+		<meta name="twitter:card" content="summary"/>
+		<meta property="twitter:title" content="Sample - Ephesus - Minimalist Jekyll Theme" />
+		<meta property="twitter:description" content="Ephesus - Minimalist Jekyll Theme" />
+		<meta property="twitter:image" content="http://localhost:4000/assets/images/favicon.png" />
+		<link rel="stylesheet" href="assets/css/highlight.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+		<link rel="shortcut icon" href="assets/images/favicon.png" />
+		<link rel="alternate" type="application/atom+xml" title="Ephesus - Minimalist Jekyll Theme" href="http://localhost:4000/atom.xml">
+		<link rel="alternate" type="application/json" title="Ephesus - Minimalist Jekyll Theme" href="http://localhost:4000/feed.json" />
+		<link rel="sitemap" type="application/xml" title="sitemap" href="http://localhost:4000/sitemap.xml" />
+		<meta name="google-site-verification" content="XXX" />
+	</head>
+<body>
+<div class="container">
+	<div class="profile">
+		<a href="http://localhost:4000"><img src="assets/images/profile.jpg" class="profile-image"></a>
+		<div class="profile-about">
+			<h2 style="margin-bottom: 0; font-weight: 700;">Hüseyin Temiz</h2>
+			
+			
+				<a href="https://twitter.com/hsyn44" target="_blank"><img src="assets/images/icon/twitter.svg" class="social-icon"></a>
+			
+			
+			
+			
+				<a href="https://github.com/huseyintemiz" target="_blank"><img src="assets/images/icon/github.svg" class="social-icon"></a>
+			
+			
+				<a href="https://linkedin.com/in/huseyintemiz12" target="_blank"><img src="assets/images/icon/linkedin.svg" class="social-icon"></a>
+			
+			<a href="about"><img src="assets/images/icon/me.svg" class="social-icon"></a>
+			<br>
+			ML/CV Engineer @Yapı Kredi Teknoloji <br> PhD Cand. @CmpE Boğaziçi Üni.
+			<br>
+			<div class="mode" id="mode-switcher" onclick="toggleNightMode();">
+				<span></span>
+			</div>
+		</div>
+	</div>
+	
+<div class="post-header">
+	<div class="post-date">20.05.2025</div>
+	<div class="post-share">
+		Share:&nbsp; 
+		<a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/sample" target="_blank"><img src="assets/images/icon/facebook.svg" class="social-icon"></a>
+		<a href="https://twitter.com/intent/tweet?source=tweetbutton&amp;original_referer=http://localhost:4000/sample&amp;text=Sample - http://localhost:4000/sample" target="_blank"><img src="assets/images/icon/twitter.svg" class="social-icon"></a>
+		<a href="https://api.whatsapp.com/send?text=http://localhost:4000/sample" target="_blank"><img src="assets/images/icon/whatsapp.svg" class="social-icon"></a>
+	</div>
+</div>
+
+<div class="blog-post-content">
+	<h1>Sample</h1>
+	<h1 id="spherical-harmonics-in-gaussian-splats">Spherical Harmonics in Gaussian Splats</h1>
+
+<h2 id="-why-use-spherical-harmonics-in-gaussian-splats">🔸 Why Use Spherical Harmonics in Gaussian Splats?</h2>
+
+<p>When rendering 3D scenes using Gaussian splats, each point (or “splat”) needs to represent not just <strong>color</strong>, but how that color <strong>changes depending on the viewing direction</strong>. Spherical harmonics allow encoding this angular variation compactly.</p>
+
+<p>This is important for achieving <strong>photorealistic rendering</strong> with effects like:</p>
+<ul>
+  <li>Specular highlights</li>
+  <li>Soft shadows</li>
+  <li>View-dependent lighting changes</li>
+</ul>
+
+<h2 id="-what-are-spherical-harmonics">🔸 What Are Spherical Harmonics?</h2>
+
+<p><strong>Spherical Harmonics (SH)</strong> are a series of <strong>orthogonal basis functions</strong> defined on the surface of a sphere. You can think of them as the 3D analog of <strong>Fourier series</strong> for functions on a sphere.</p>
+
+<p>They are indexed by:</p>
+<ul>
+  <li><strong>Degree (l)</strong>: controls the frequency (higher means more detail)</li>
+  <li><strong>Order (m)</strong>: varies from <code class="language-plaintext highlighter-rouge">-l</code> to <code class="language-plaintext highlighter-rouge">+l</code></li>
+</ul>
+
+<h3 id="example-levels">Example Levels:</h3>
+<ul>
+  <li><strong>SH level 0 (SH0):</strong> Only constant color (no view dependence)</li>
+  <li><strong>SH level 1 (SH1):</strong> Basic directional lighting (like Lambertian)</li>
+  <li><strong>SH level 2 or 3+:</strong> Captures more complex angular dependencies</li>
+</ul>
+
+<h2 id="-sh-in-gaussian-splatting">🔸 SH in Gaussian Splatting</h2>
+
+<p>Each 3D Gaussian stores:</p>
+<ul>
+  <li>Position, scale, rotation, opacity</li>
+  <li><strong>Spherical Harmonics coefficients for RGB appearance</strong></li>
+</ul>
+
+<p>Instead of storing just a single RGB color, we store a <strong>set of SH coefficients per color channel</strong>. When rendering:</p>
+<ol>
+  <li>Compute the <strong>viewing direction</strong> <code class="language-plaintext highlighter-rouge">v</code> for each Gaussian.</li>
+  <li>Evaluate the <strong>SH basis functions</strong> at direction <code class="language-plaintext highlighter-rouge">v</code> to get a vector <code class="language-plaintext highlighter-rouge">SH_basis(v)</code>.</li>
+  <li>Compute the final color as a dot product:</li>
+</ol>
+
+
+</div>
+<div class="tags-container">
+	
+</div>
+<div class="navigation">
+	
+		<a class="prev" href="/spherical">< Spherical</a>
+	 
+</div>
+
+	<section class="comment-area w-100">
+		<div class="comment-wrapper">
+			<div id="disqus_thread" class="article-comments"></div>
+			<script>
+			(function() {
+			var d = document, s = d.createElement('script');
+			s.src = '//XXX.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</div>
+	</section>
+
+	<div class="footer">
+		<span>Made with <font color="red">♥</font> on Earth, a minimalist Jekyll Theme by <a href="https://hakan.io"><b>Hakan</b></a></span>
+	</div>
+</div>
+	<script src="assets/js/ephesus.js"></script>
+	<script type="text/javascript">
+		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+			document.documentElement.setAttribute('data-theme', 'dark');
+			document.getElementById('mode-switcher').classList.add('active');
+		}
+	</script>
+
+	
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-00"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-XXXXXXXX-00');
+    </script>
+	
+</body>
+</html>
