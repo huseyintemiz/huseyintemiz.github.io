@@ -34,7 +34,7 @@ To avoid the performance degradations of random sampling, **Poisson Disk Samplin
 
 
 <div align="center">
-  <img src="images/algorithm_comparison.png" alt="Algorithm Comparison" width="70%">
+  <img src="assets/images/post001_algorithm_comparison.png" alt="Algorithm Comparison" width="70%">
   <p><em> Figure 1: A side-by-side comparison of random sampling (left) and Poisson disk sampling (right) on a 2D surface.</em></p>
 </div>
 
@@ -45,14 +45,14 @@ Figure 1 shows the comparison between the two sampling methods, highlighting how
 
 
 <div align="center">
-  <img src="images/sampling_comparison.png" alt="Sampling Comparison on Surface" width="70%">
+  <img src="assets/images/post001_sampling_comparison.png" alt="Sampling Comparison on Surface" width="70%">
     <p><em>Figure 2: Comparison between random sampling (left) and Poisson disk sampling (right) on a sphere surface.</em></p>
 </div>
 
 As Figure 2 shows, Poisson disk sampling provides significantly better surface coverage compared to random sampling. The uniform distribution of sample points ensures that no regions of the mesh are left sparsely covered, while simultaneously preventing overcrowding in other areas. This improved coverage translates directly to more consistent Gaussian placement across the entire FLAME mesh surface, resulting in better geometric representation and more stable optimization during the 3D Gaussian splatting process.
 
 <div align="center">
-  <img src="images/nn_distance_comparison.png" alt="Nearest Neighbor Distance Comparison" width="50%">
+  <img src="assets/images/post001_nn_distance_comparison.png" alt="Nearest Neighbor Distance Comparison" width="50%">
 <p><em>Figure 3: Nearest neighbor distance distributions for different samplings on sphere surface.</em></p>  
 </div>
 
@@ -79,7 +79,7 @@ Figures 2 and 3 illustrate performance on a spherical surface with a more unifor
 
 
 <div align="center">
-  <img src="images/flame_sampling_comparison.png" alt="Nearest Neighbor Distance Comparison" width="50%">
+  <img src="assets/images/post001_flame_sampling_comparison.png" alt="Nearest Neighbor Distance Comparison" width="50%">
 <p><em>Figure 4: Nearest neighbor distance distributions for different samplings.</em></p>  
 </div>
 
@@ -87,14 +87,14 @@ Figure 4 visually compares random and Poisson disk sampling on the FLAME mesh fo
 
 
 <div align="center">
-  <img src="images/flame_nn_distance_histograms.png" alt="Nearest Neighbor Distance Comparison" width="50%">
+  <img src="assets/images/post001_flame_nn_distance_histograms.png" alt="Nearest Neighbor Distance Comparison" width="50%">
 <p><em>Figure 5: Nearest Neihbor distance distribution of different sampling experiments.</em></p>  
 </div>
 
 In Figure 5, Poisson disk sampling consistently enforces a minimum distance between neighboring samples, as shown by the sharp cutoff on the left side of each distribution. This property prevents samples from clustering too closely or overlapping, resulting in a more uniform and controlled distribution across the surface. In contrast, random sampling produces a broader spread of nearest neighbor distances, with many samples packed very closely together, leading to potential overlaps and uneven coverage. As the number of points increases, Poisson sampling maintains this regularity, while random sampling continues to exhibit significant variability and clustering. This highlights the robustness of Poisson disk sampling for applications requiring uniform coverage.
 
 <div align="center">
-  <img src="images/flame_sampling_statistics.png" alt="Nearest Neighbor Distance Comparison" width="50%">
+  <img src="assets/images/post001_flame_sampling_statistics.png" alt="Nearest Neighbor Distance Comparison" width="50%">
 <p><em>Figure 6: flame_sampling_statistics.png.</em></p>  
 </div>
 
