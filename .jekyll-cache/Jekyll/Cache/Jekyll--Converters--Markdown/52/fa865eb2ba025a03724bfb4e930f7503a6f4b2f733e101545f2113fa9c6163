@@ -1,4 +1,4 @@
-I"!(<h2 id="placing-gaussians-on-mesh-surface">Placing Gaussians on Mesh Surface</h2>
+I"û)<!-- ## Placing Gaussians on Mesh Surface -->
 
 <p>In recent years, 3D Gaussian Splatting (GS) has emerged as a powerful technique for photorealistic avatar rendering and animation. Optimizing Gaussian splats without any geometric prior is challenging, as they often fail to regress accurate geometry. However, when the geometry of the object is known, fitting a mesh in advance and using its surface as a geometric prior provides a significant advantage. For example, if the object to be reconstructed is a human head, leveraging the FLAME mesh model as a geometric prior can greatly improve results.</p>
 
@@ -60,19 +60,44 @@
 <p><em>Figure 3: Nearest neighbor distance distributions for different samplings on sphere surface.</em></p>  
 </div>
 
-<div align="center">
-
-| Metric | Poisson Disk Sampling | Random Sampling |
-|--------|----------------------|-----------------|
-| **n_points** | 500 | 500 |
-| **nn_mean** | 0.1187 | 0.0787 |
-| **nn_std** | 0.0160 | 0.0418 |
-| **nn_min** | 0.1001 | 0.0073 |
-| **nn_max** | 0.1853 | 0.2509 |
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Poisson Disk Sampling</th>
+      <th>Random Sampling</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>n_points</strong></td>
+      <td>500</td>
+      <td>500</td>
+    </tr>
+    <tr>
+      <td><strong>nn_mean</strong></td>
+      <td>0.1187</td>
+      <td>0.0787</td>
+    </tr>
+    <tr>
+      <td><strong>nn_std</strong></td>
+      <td>0.0160</td>
+      <td>0.0418</td>
+    </tr>
+    <tr>
+      <td><strong>nn_min</strong></td>
+      <td>0.1001</td>
+      <td>0.0073</td>
+    </tr>
+    <tr>
+      <td><strong>nn_max</strong></td>
+      <td>0.1853</td>
+      <td>0.2509</td>
+    </tr>
+  </tbody>
+</table>
 
 <p><em>Table 1: Nearest neighbor distance statistics comparison between Poisson Disk Sampling and Random Sampling methods.</em></p>
-
-</div>
 
 <p>The quantitative analysis in Table 1 and the distribution visualization in Figure 3 clearly demonstrate the superiority of Poisson Disk Sampling over random sampling. Most notably, Poisson Disk Sampling maintains a <strong>significantly higher minimum distance</strong> (0.1001 vs 0.0073), preventing the extreme clustering that occurs with random sampling. The <strong>lower standard deviation</strong> (0.0160 vs 0.0418) indicates much more consistent spacing between neighboring Gaussians, while the <strong>constrained maximum distance</strong> (0.1853 vs 0.2509) ensures no large gaps in coverage. This uniform distribution is crucial for stable 3D Gaussian Splatting optimization, as it prevents both overcrowded regions that cause rendering artifacts and sparse areas that miss geometric detail.</p>
 
@@ -101,16 +126,34 @@
 
 <p>The Uniformity Score is a metric that quantifies how evenly points are distributed in a sampling. It is calculated as 1 minus the coefficient of variation (CV) of the nearest neighbor distances, where CV is the standard deviation divided by the mean. A score closer to 1 indicates a more uniform (evenly spaced) distribution, while a lower score means greater variability and less uniformity. This makes it easy to compare different sampling methods: for example, Poisson disk sampling yields higher uniformity scores than random sampling, reflecting its more consistent spacing between points.</p>
 
-<div align="center">
-
-| Points | Random Sampling | Poisson Disk Sampling |
-|--------|----------------|----------------------|
-| 1000   | 0.4906         | 0.7752               |
-| 5000   | 0.4760         | 0.8107               |
-| 10000  | 0.4795         | 0.8086               |
+<table>
+  <thead>
+    <tr>
+      <th>Points</th>
+      <th>Random Sampling</th>
+      <th>Poisson Disk Sampling</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1000</td>
+      <td>0.4906</td>
+      <td>0.7752</td>
+    </tr>
+    <tr>
+      <td>5000</td>
+      <td>0.4760</td>
+      <td>0.8107</td>
+    </tr>
+    <tr>
+      <td>10000</td>
+      <td>0.4795</td>
+      <td>0.8086</td>
+    </tr>
+  </tbody>
+</table>
 
 <p><em>Table 2: Uniformity scores (higher is better) for random and Poisson disk sampling at different point counts.</em></p>
-</div>
 
 <p>Table 2 clearly shows that Poisson disk sampling consistently achieves much higher uniformity scores than random sampling across all point counts. This indicates that Poisson disk sampling produces a more evenly spaced and regular distribution of points on the mesh surface, while random sampling results in greater variability and less uniform coverage. The higher uniformity of Poisson disk sampling is especially important for applications that require consistent surface representation and stable optimization.</p>
 
