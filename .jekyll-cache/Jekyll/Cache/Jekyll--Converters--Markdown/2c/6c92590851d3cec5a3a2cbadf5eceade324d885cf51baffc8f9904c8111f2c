@@ -1,81 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-US" data-theme="light">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>3d Meshes And Uv Mapping - Temiz.ai Research Blog</title>
-		<meta name="description" content="Temiz.ai - Research blog of Huseyin Temiz.">
-		<meta name="keywords" content="">
-		<base href="http://localhost:4000" />
-		
-    	<meta content="2025-07-04T00:00:00+03:00" property="article:published_time">
-    	<meta content="http://localhost:4000/about/" property="article:author">
-  		
-		<meta property="og:site_name" content="Temiz.ai Research Blog">
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content="http://localhost:4000/3d-meshes-and-uv-mapping"/>
-		<meta property="og:title" content="3d Meshes And Uv Mapping - Temiz.ai Research Blog" />
-		<meta property="og:description" content="Temiz.ai - Research blog of Huseyin Temiz." />
-		<meta property="og:image" content="http://localhost:4000/assets/images/favicon.png"/>
-		<meta name="twitter:card" content="summary"/>
-		<meta property="twitter:title" content="3d Meshes And Uv Mapping - Temiz.ai Research Blog" />
-		<meta property="twitter:description" content="Temiz.ai - Research blog of Huseyin Temiz." />
-		<meta property="twitter:image" content="http://localhost:4000/assets/images/favicon.png" />
-		<link rel="stylesheet" href="assets/css/highlight.css">
-		<link rel="stylesheet" href="assets/css/style.css">
-		<link rel="shortcut icon" href="assets/images/favicon.png" />
-		<link rel="alternate" type="application/atom+xml" title="Temiz.ai Research Blog" href="http://localhost:4000/atom.xml">
-		<link rel="alternate" type="application/json" title="Temiz.ai Research Blog" href="http://localhost:4000/feed.json" />
-		<link rel="sitemap" type="application/xml" title="sitemap" href="http://localhost:4000/sitemap.xml" />
-		<meta name="google-site-verification" content="XXX" />
-	</head>
-<body>
-<head>
-  <script type="text/javascript" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-</head>
-<div class="container">
-	<div class="profile">
-		<a href="http://localhost:4000"><img src="assets/images/profile.jpg" class="profile-image"></a>
-		<div class="profile-about">
-			<h2 style="margin-bottom: 0; font-weight: 700;">Hüseyin Temiz</h2>
-			
-			
-				<a href="https://twitter.com/hsyn44" target="_blank"><img src="assets/images/icon/twitter.svg" class="social-icon"></a>
-			
-			
-			
-			
-				<a href="https://github.com/huseyintemiz" target="_blank"><img src="assets/images/icon/github.svg" class="social-icon"></a>
-			
-			
-				<a href="https://linkedin.com/in/huseyintemiz12" target="_blank"><img src="assets/images/icon/linkedin.svg" class="social-icon"></a>
-			
-			<a href="about"><img src="assets/images/icon/me.svg" class="social-icon"></a>
-			<br>
-			ML/CV Engineer @Yapı Kredi Teknoloji <br> PhD Cand. @CmpE Boğaziçi Uni.
-			<br>
-			<div class="mode" id="mode-switcher" onclick="toggleNightMode();">
-				<span></span>
-			</div>
-		</div>
-	</div>
-	
-<div class="post-header">
-	<div class="post-date">04.07.2025</div>
-	<div class="post-share">
-		Share:&nbsp; 
-		<a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/3D-Meshes-and-UV-Mapping" target="_blank"><img src="assets/images/icon/facebook.svg" class="social-icon"></a>
-		<a href="https://twitter.com/intent/tweet?source=tweetbutton&amp;original_referer=http://localhost:4000/3D-Meshes-and-UV-Mapping&amp;text=3d Meshes And Uv Mapping - http://localhost:4000/3D-Meshes-and-UV-Mapping" target="_blank"><img src="assets/images/icon/twitter.svg" class="social-icon"></a>
-		<a href="https://api.whatsapp.com/send?text=http://localhost:4000/3D-Meshes-and-UV-Mapping" target="_blank"><img src="assets/images/icon/whatsapp.svg" class="social-icon"></a>
-	</div>
-</div>
-
-<div class="blog-post-content">
-	<h1>3d Meshes And Uv Mapping</h1>
-	
+I"N
 <p>Meshes and UV maps are core to 3D graphics—they define shape and texture placement. From gaming and film to AR/VR and avatars, understanding how they work together is key to creating realistic and efficient digital content. This blog covers the basics and shows how they’re used in practice.</p>
 
 <h3 id="3d-mesh-and-flame">3D Mesh and FLAME</h3>
@@ -88,7 +11,7 @@
 <p><em>Figure 1: FLAME head mesh with different poses.[2]</em></p>  
 </div>
 
-<p>FLAME’s parametric design uses <strong>300 shape parameters</strong> (from PCA of 3D face scans) for identity control, <strong>100 expression parameters</strong> for dynamic facial animation, and <strong>6 pose parameters</strong> (3 neck, 3 jaw) for head/jaw rotation. This compact 406-parameter representation enables diverse, realistic faces with computational efficiency for real-time applications, as demonstrated in Figure 2 showing various shape, pose, and expression variations.</p>
+<p>FLAME’s parametric design uses <strong>300 shape parameters</strong> (from PCA of 3D face scans) for identity control, <strong>100 expression parameters</strong> for dynamic facial animation, and <strong>6 pose parameters</strong> (3 neck, 3 jaw) for head/jaw rotation. This compact 406-parameter representation enables diverse, realistic faces with computational efficiency for real-time applications, as demonstrated in Figure 3 showing various shape, pose, and expression variations.</p>
 
 <div align="center">
   <img src="assets/images/post002_flame_model_variations.gif" alt="Nearest Neighbor Distance Comparison" width="80%" />
@@ -124,8 +47,8 @@
 <p>UV coordinates are normalized (0 to 1 range), making them resolution-independent. Whether your texture is 256×256 pixels or 4096×4096 pixels, the same UV coordinates will work perfectly.</p>
 
 <div align="center">
-  <img src="assets/images/post002_flame_uv_wireframe.png" alt="Nearest Neighbor Distance Comparison" width="70%" />
-<p><em>Figure 3: UV MAP of FLAME.</em></p>  
+  <img src="assets/images/post002_flame_uv_wireframe.png" alt="Nearest Neighbor Distance Comparison" width="50%" />
+<p><em>Figure 2: UV MAP of FLAME.</em></p>  
 </div>
 
 <h3 id="how-flame-mesh-and-uv-map-work-together">How FLAME Mesh and UV Map Work Together</h3>
@@ -178,53 +101,4 @@
 <p>[1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. “Learning a model of facial shape and expression from 4D scans.” ACM Trans. Graph. 2017.</p>
 
 <p>[2] https://github.com/TimoBolkart/FLAME-Universe</p>
-
-</div>
-<div class="tags-container">
-	
-</div>
-<div class="navigation">
-	
-		<a class="prev" href="/placing-gaussians-splats-on-mesh-surface">< Placing Gaussians Splats On Mesh Surface</a>
-	 
-</div>
-
-	<section class="comment-area w-100">
-		<div class="comment-wrapper">
-			<div id="disqus_thread" class="article-comments"></div>
-			<script>
-			(function() {
-			var d = document, s = d.createElement('script');
-			s.src = '//XXX.disqus.com/embed.js';
-			s.setAttribute('data-timestamp', +new Date());
-			(d.head || d.body).appendChild(s);
-			})();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		</div>
-	</section>
-
-	<!-- <div class="footer">
-		<span>Made with <font color="red">♥</font> on Earth, a minimalist Jekyll Theme by <a href="https://hakan.io"><b>Hakan</b></a></span>
-	</div> -->
-</div>
-	<script src="assets/js/ephesus.js"></script>
-	<script type="text/javascript">
-		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-			document.documentElement.setAttribute('data-theme', 'dark');
-			document.getElementById('mode-switcher').classList.add('active');
-		}
-	</script>
-
-	
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-00"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-XXXXXXXX-00');
-    </script>
-	
-</body>
-</html>
+:ET

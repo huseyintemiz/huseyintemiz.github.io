@@ -10,8 +10,16 @@ A 3D mesh is a collection of vertices, edges, and faces that define the surface 
 
 The FLAME [1] model (Faces Learned with an Articulated Model and Expressions) is a widely used parametric 3D head mesh model designed for realistic facial animation. It represents the face with 5023 vertices and 9976 triangles, controlled by identity, expression, and pose parameters. FLAME uses linear blend skinning (LBS) and blendshapes for expressive deformation, making it compact and efficient for applications like 3D avatars, facial reenactment, and neural rendering from 2D images or videos.
 <div align="center">
-  <img src="images/post002_flame_head.png" alt="Nearest Neighbor Distance Comparison" width="50%">
+  <img src="assets/images/post002_flame_head.png" alt="Nearest Neighbor Distance Comparison" width="50%">
 <p><em>Figure 1: FLAME head mesh with different poses.[2]</em></p>  
+</div>
+
+
+FLAME's parametric design uses **300 shape parameters** (from PCA of 3D face scans) for identity control, **100 expression parameters** for dynamic facial animation, and **6 pose parameters** (3 neck, 3 jaw) for head/jaw rotation. This compact 406-parameter representation enables diverse, realistic faces with computational efficiency for real-time applications, as demonstrated in Figure 2 showing various shape, pose, and expression variations.
+
+<div align="center">
+  <img src="assets/images/post002_flame_model_variations.gif" alt="Nearest Neighbor Distance Comparison" width="80%">
+<p><em>Figure 2: FLAME variation.</em></p>  
 </div>
 
 ### What Is UV Mapping?
@@ -39,9 +47,11 @@ This unwrapping process is exactly what UV mapping does—it takes the complex 3
 UV coordinates are normalized (0 to 1 range), making them resolution-independent. Whether your texture is 256×256 pixels or 4096×4096 pixels, the same UV coordinates will work perfectly.
 
 <div align="center">
-  <img src="images/post002_flame_uv_wireframe.png" alt="Nearest Neighbor Distance Comparison" width="50%">
-<p><em>Figure 2: UV MAP of FLAME.</em></p>  
+  <img src="assets/images/post002_flame_uv_wireframe.png" alt="Nearest Neighbor Distance Comparison" width="70%">
+<p><em>Figure 3: UV MAP of FLAME.</em></p>  
 </div>
+
+
 
 
 ### How FLAME Mesh and UV Map Work Together
