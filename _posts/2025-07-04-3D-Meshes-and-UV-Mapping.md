@@ -85,5 +85,7 @@ Tools like Trimesh and Open3D allow easy access to mesh geometry and UV coordina
 Mesh and UV mapping form the foundation of 3D graphics, enabling detailed geometry and rich texture placement across digital models. Whether you're working on games, films, or avatars, mastering these concepts is essential. Try loading a simple mesh and unwrapping it yourself to see how UVs bring textures to life—tools like Blender or code notebooks make it easy to get started.
 
 ### References
+
 [1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. "Learning a model of facial shape and expression from 4D scans." ACM Trans. Graph. 2017.
+
 [2] https://github.com/TimoBolkart/FLAME-Universe

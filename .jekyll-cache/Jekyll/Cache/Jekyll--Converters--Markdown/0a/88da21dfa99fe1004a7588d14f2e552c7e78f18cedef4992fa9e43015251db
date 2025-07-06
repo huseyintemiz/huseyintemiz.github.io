@@ -1,4 +1,4 @@
-I"�
+I"�
 <p>Meshes and UV maps are core to 3D graphics—they define shape and texture placement. From gaming and film to AR/VR and avatars, understanding how they work together is key to creating realistic and efficient digital content. This blog covers the basics and shows how they’re used in practice.</p>
 
 <h3 id="3d-mesh-and-flame">3D Mesh and FLAME</h3>
@@ -90,6 +90,8 @@
 <p>Mesh and UV mapping form the foundation of 3D graphics, enabling detailed geometry and rich texture placement across digital models. Whether you’re working on games, films, or avatars, mastering these concepts is essential. Try loading a simple mesh and unwrapping it yourself to see how UVs bring textures to life—tools like Blender or code notebooks make it easy to get started.</p>
 
 <h3 id="references">References</h3>
-<p>[1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. “Learning a model of facial shape and expression from 4D scans.” ACM Trans. Graph. 2017.
-[2] https://github.com/TimoBolkart/FLAME-Universe</p>
+
+<p>[1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. “Learning a model of facial shape and expression from 4D scans.” ACM Trans. Graph. 2017.</p>
+
+<p>[2] https://github.com/TimoBolkart/FLAME-Universe</p>
 :ET

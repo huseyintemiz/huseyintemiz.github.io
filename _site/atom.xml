@@ -4,7 +4,7 @@
  <title>Temiz.ai Research Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2025-07-06T15:44:43+03:00</updated>
+ <updated>2025-07-06T15:46:37+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Hüseyin Temiz</name>
@@ -109,8 +109,10 @@
 &lt;p&gt;Mesh and UV mapping form the foundation of 3D graphics, enabling detailed geometry and rich texture placement across digital models. Whether you’re working on games, films, or avatars, mastering these concepts is essential. Try loading a simple mesh and unwrapping it yourself to see how UVs bring textures to life—tools like Blender or code notebooks make it easy to get started.&lt;/p&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
-&lt;p&gt;[1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. “Learning a model of facial shape and expression from 4D scans.” ACM Trans. Graph. 2017.
-[2] https://github.com/TimoBolkart/FLAME-Universe&lt;/p&gt;
+
+&lt;p&gt;[1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. “Learning a model of facial shape and expression from 4D scans.” ACM Trans. Graph. 2017.&lt;/p&gt;
+
+&lt;p&gt;[2] https://github.com/TimoBolkart/FLAME-Universe&lt;/p&gt;
 </content>
  </entry>
  
