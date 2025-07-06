@@ -4,13 +4,155 @@
  <title>Temiz.ai Research Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2025-07-06T16:06:33+03:00</updated>
+ <updated>2025-07-06T17:52:27+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Hüseyin Temiz</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>3d Gaussian Splats Avatars Utilizing Uv Mapping</title>
+   <link href="http://localhost:4000/3d-gaussian-splats-avatars-utilizing-uv-mapping"/>
+   <updated>2025-07-06T00:00:00+03:00</updated>
+   <id>http://localhost:4000/3D-Gaussian-Splats-Avatars-utilizing-UV-mapping</id>
+   <content type="html">
+&lt;p&gt;In this blog post, we examine how four recent methods utilize UV mapping within Gaussian Splat avatar pipelines. Many modern approaches convert the 3D mesh representation into a 2D UV-mapped domain to address the limitations of working directly with 3D meshes. By leveraging UV mapping, these pipelines achieve more uniform sampling, intuitive 2D editing, and efficient data compression—advantages not easily attainable with raw 3D geometry. Each method in the literature integrates UV mapping differently to maximize these benefits. Here, we explore and compare their strategies.&lt;/p&gt;
+
+&lt;h3 id=&quot;uv-mapping-in-each-method&quot;&gt;UV Mapping in Each Method&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Method&lt;/th&gt;
+      &lt;th&gt;How UV Is Used&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;FlashAvatar&lt;/strong&gt; [1]&lt;/td&gt;
+      &lt;td&gt;• &lt;strong&gt;Canonical field initialization&lt;/strong&gt; by sampling Gaussians uniformly over the UV map yields a far more even distribution across face, hair, and neck regions.&lt;br /&gt;• &lt;strong&gt;Mesh-driven motion&lt;/strong&gt; uses UV→barycentric mapping to attach Gaussians to mesh and apply dynamic offsets.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;FATE&lt;/strong&gt;   [2]&lt;/td&gt;
+      &lt;td&gt;• &lt;strong&gt;Sampling-based densification&lt;/strong&gt; ensures optimal Gaussian placement by sampling uniformly in UV space.&lt;br /&gt;• &lt;strong&gt;Neural baking&lt;/strong&gt; converts discrete Gaussians into continuous attribute maps (position, color, opacity) in UV, enabling intuitive texture-style editing of the splats.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;GEM&lt;/strong&gt;    [3]&lt;/td&gt;
+      &lt;td&gt;• &lt;strong&gt;Gaussian eigenbasis construction&lt;/strong&gt;: a UNet predicts multi-channel Gaussian parameter maps in the FLAME UV domain, where each pixel encodes one splat’s full parameters.&lt;br /&gt;• &lt;strong&gt;Linear distillation&lt;/strong&gt; builds compact eigenbases over these UV maps for real-time synthesis.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;MeGA&lt;/strong&gt;  [4]&lt;/td&gt;
+      &lt;td&gt;• &lt;strong&gt;UV displacement map&lt;/strong&gt; driven by FLAME parameters captures per-vertex geometric detail.&lt;br /&gt;• &lt;strong&gt;Neural textures&lt;/strong&gt; (diffuse, view-dependent, dynamic) live in UV space for high-fidelity appearance.&lt;br /&gt;• &lt;strong&gt;Deferred rendering&lt;/strong&gt; rasterizes the refined UV mesh + textures before blending with Gaussian hair.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;similarities--differences&quot;&gt;Similarities &amp;amp; Differences&lt;/h3&gt;
+
+&lt;!-- | Aspect | FATE | FlashAvatar | GEM | MeGA |
+|--------|------|-------------|-----|------|
+| **UV Usage** | Sampling + Neural baking | Canonical field initialization | Gaussian eigenbasis construction | UV displacement + Neural textures |
+| **Attachment** | UV sampling → barycentric | Direct mesh attachment + offsets | Mesh-independent eigen-coefficients | Hybrid: mesh + UV + Gaussians |
+| **Editing** | Continuous UV attribute maps | Discrete splat manipulation | Compact eigenbasis control | Separate geometry/appearance control |
+| **Real-time** | Post-training baking | Direct optimization | Linear distillation | Deferred rendering pipeline | --&gt;
+
+&lt;h4 id=&quot;use-of-uv-space&quot;&gt;Use of UV Space&lt;/h4&gt;
+
+&lt;p&gt;All four methods decouple 3D Gaussian placement and attribute editing by projecting onto a shared 2D UV domain, avoiding the irregular sampling and distortion issues of raw mesh faces.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Sampling vs. Baking&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;FATE &amp;amp; FlashAvatar perform &lt;strong&gt;direct UV sampling&lt;/strong&gt; to place Gaussians; FATE further &lt;strong&gt;bakes&lt;/strong&gt; trained splats into continuous UV maps for editing.&lt;/li&gt;
+      &lt;li&gt;GEM uses UV as an &lt;strong&gt;intermediate training representation&lt;/strong&gt;, distilling it into linear eigenbases, whereas MeGA uses UV both for &lt;strong&gt;geometry refinement&lt;/strong&gt; (displacement) and &lt;strong&gt;texture&lt;/strong&gt; creation.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;mesh-dependence&quot;&gt;Mesh Dependence&lt;/h4&gt;
+
+&lt;p&gt;Except for pure mesh-driven strategies, all UV-based pipelines still rely on a parametric mesh (usually FLAME) to establish UV→3D correspondences and drive animation via blendshapes or skinning.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Attachment Strategies:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;FlashAvatar&lt;/strong&gt; attaches splats directly to mesh vertices (via UV → barycentric weights) then learns offsets.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;FATE&lt;/strong&gt; samples points purely in UV and reconstructs their 3D positions via barycentric projection.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;GEM&lt;/strong&gt; requires the mesh only at inference to deform distilled eigen-coefficients.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;MeGA&lt;/strong&gt; hybridizes: the mesh handles global facial motion, UV displacement refines geometry, and Gaussian splats model hair.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;editing-workflow&quot;&gt;Editing Workflow&lt;/h4&gt;
+
+&lt;p&gt;UV domains unlock powerful 2D editing: painting, diffusion-model edits, or neural filters—far more intuitive than manipulating unstructured 3D point clouds.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Continuous vs. Discrete:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;FATE&lt;/strong&gt; creates &lt;strong&gt;continuous UV attribute maps&lt;/strong&gt;, enabling pixel-space edits.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;GEM&lt;/strong&gt; keeps &lt;strong&gt;discrete&lt;/strong&gt; splats but trains via UV maps for compactness.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;MeGA&lt;/strong&gt; splits &lt;strong&gt;geometry&lt;/strong&gt; (UV displacement) from &lt;strong&gt;appearance&lt;/strong&gt; (neural textures), offering fine-grained control in both domains.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;advantages-of-uv-mapping-over-direct-mesh-sampling&quot;&gt;Advantages of UV Mapping over Direct Mesh Sampling&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Uniform Density Control&lt;/strong&gt;
+UV sampling lets you enforce an even coverage of splats (e.g., FlashAvatar), sidestepping the uneven vertex spacing or face-size distortions of direct 3D sampling.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;2D Editing Toolchain&lt;/strong&gt;
+Attribute maps in UV space can be edited with mature 2D tools—painting, diffusion models, or neural filters—making appearance tweaks as straightforward as texture work on polygonal models.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Compact Representation &amp;amp; Acceleration&lt;/strong&gt;
+UV maps lend themselves to image-based compression or CNN/UNet processing (as in GEM), enabling low-dimensional bases and lightning-fast inference on commodity hardware.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Decoupling Geometry &amp;amp; Appearance&lt;/strong&gt;
+By separating UV displacement for shape from UV textures for color and dynamics (MeGA), pipelines simplify rendering and editing complexity.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Stable Barycentric Mapping&lt;/strong&gt;
+Sampling in UV then projecting via barycentric coordinates (FATE) avoids mesh discretization artifacts and ensures smooth, differentiable optimization of Gaussian parameters.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;In sum, UV parameterizations transform complex 3D Gaussian splat operations into well-behaved 2D workflows, yielding more uniform sampling, intuitive editing, and powerful opportunities for compression and acceleration that mesh-only approaches simply cannot match.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;p&gt;[1] FlashAvatar: Xiang, Jun, et al. “Flashavatar: High-fidelity head avatar with efficient gaussian embedding.” CVPR 2024.&lt;/p&gt;
+
+&lt;p&gt;[3] FATE: Zhang, Jiawei, et al. “Fate: Full-head gaussian avatar with textural editing from monocular video.” CVPR 2025.&lt;/p&gt;
+
+&lt;p&gt;[4] GEM: Zielonka, Wojciech, et al. “Gaussian eigen models for human heads.” CVPR 2025.&lt;/p&gt;
+
+&lt;p&gt;[2] MEGA: Wang, Cong, et al. “Mega: Hybrid mesh-gaussian head avatar for high-fidelity rendering and head editing.” CVPR 2025.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>3d Meshes And Uv Mapping</title>
@@ -25,12 +167,15 @@
 &lt;p&gt;A 3D mesh is a collection of vertices, edges, and faces that define the surface of a 3D object—like a wireframe sculpture. It forms the structural backbone of digital models used in games, animation, simulations, and 3D avatars. Common file formats include .obj, .ply, and .glb. For example, a human face mesh may consist of thousands of vertices and triangular faces to capture fine geometric detail.&lt;/p&gt;
 
 &lt;p&gt;The FLAME [1] model (Faces Learned with an Articulated Model and Expressions) is a widely used parametric 3D head mesh model designed for realistic facial animation. It represents the face with 5023 vertices and 9976 triangles, controlled by identity, expression, and pose parameters. FLAME uses linear blend skinning (LBS) and blendshapes for expressive deformation, making it compact and efficient for applications like 3D avatars, facial reenactment, and neural rendering from 2D images or videos.&lt;/p&gt;
+
 &lt;div align=&quot;center&quot;&gt;
   &lt;img src=&quot;assets/images/post002_flame_head.png&quot; alt=&quot;Nearest Neighbor Distance Comparison&quot; width=&quot;50%&quot; /&gt;
 &lt;p&gt;&lt;em&gt;Figure 1: FLAME head mesh with different poses.[2]&lt;/em&gt;&lt;/p&gt;  
 &lt;/div&gt;
 
-&lt;p&gt;FLAME’s parametric design uses &lt;strong&gt;300 shape parameters&lt;/strong&gt; (from PCA of 3D face scans) for identity control, &lt;strong&gt;100 expression parameters&lt;/strong&gt; for dynamic facial animation, and &lt;strong&gt;6 pose parameters&lt;/strong&gt; (3 neck, 3 jaw) for head/jaw rotation. This compact 406-parameter representation enables diverse, realistic faces with computational efficiency for real-time applications, as demonstrated in Figure 2 showing various shape, pose, and expression variations.&lt;/p&gt;
+&lt;!-- FLAME&apos;s parametric design uses **300 shape parameters** (from PCA of 3D face scans) for identity control, **100 expression parameters** for dynamic facial animation, and **6 pose parameters** (3 neck, 3 jaw) for head/jaw rotation. This compact 406-parameter representation enables diverse, realistic faces with computational efficiency for real-time applications, as demonstrated in Figure 2 showing various shape, pose, and expression variations.  --&gt;
+
+&lt;p&gt;FLAME’s parametric design uses &lt;strong&gt;300 shape parameters&lt;/strong&gt; (from PCA of 3D face scans) for identity control, &lt;strong&gt;100 expression parameters&lt;/strong&gt; for dynamic facial animation, and &lt;strong&gt;6 pose parameters&lt;/strong&gt; (3 neck, 3 jaw) for head/jaw rotation. By adjusting or tuning these parameters, we effectively modify the positions of FLAME’s 5023 vertices, enabling the generation of diverse facial shapes, expressions, and poses. This compact 406-parameter representation enables diverse, realistic faces with computational efficiency for real-time applications, as demonstrated in Figure 2 showing various shape, pose, and expression variations.&lt;/p&gt;
 
 &lt;div align=&quot;center&quot;&gt;
   &lt;img src=&quot;assets/images/post002_flame_model_variations.gif&quot; alt=&quot;Nearest Neighbor Distance Comparison&quot; width=&quot;80%&quot; /&gt;
@@ -66,7 +211,7 @@
 &lt;p&gt;UV coordinates are normalized (0 to 1 range), making them resolution-independent. Whether your texture is 256×256 pixels or 4096×4096 pixels, the same UV coordinates will work perfectly.&lt;/p&gt;
 
 &lt;div align=&quot;center&quot;&gt;
-  &lt;img src=&quot;assets/images/post002_flame_uv_wireframe.png&quot; alt=&quot;Nearest Neighbor Distance Comparison&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;assets/images/post002_flame_uv_wireframe.png&quot; alt=&quot;Nearest Neighbor Distance Comparison&quot; width=&quot;55%&quot; /&gt;
 &lt;p&gt;&lt;em&gt;Figure 3: UV MAP of FLAME.&lt;/em&gt;&lt;/p&gt;  
 &lt;/div&gt;
 
