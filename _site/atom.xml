@@ -4,7 +4,7 @@
  <title>Temiz.ai Research Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2025-07-04T00:27:03+03:00</updated>
+ <updated>2025-07-06T15:44:43+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Hüseyin Temiz</name>
@@ -13,10 +13,112 @@
 
  
  <entry>
-   <title>Placing Gaussians On Mesh Surface</title>
-   <link href="http://localhost:4000/placing-gaussians-on-mesh-surface"/>
+   <title>3d Meshes And Uv Mapping</title>
+   <link href="http://localhost:4000/3d-meshes-and-uv-mapping"/>
+   <updated>2025-07-04T00:00:00+03:00</updated>
+   <id>http://localhost:4000/3D-Meshes-and-UV-Mapping</id>
+   <content type="html">
+&lt;p&gt;Meshes and UV maps are core to 3D graphics—they define shape and texture placement. From gaming and film to AR/VR and avatars, understanding how they work together is key to creating realistic and efficient digital content. This blog covers the basics and shows how they’re used in practice.&lt;/p&gt;
+
+&lt;h3 id=&quot;3d-mesh-and-flame&quot;&gt;3D Mesh and FLAME&lt;/h3&gt;
+
+&lt;p&gt;A 3D mesh is a collection of vertices, edges, and faces that define the surface of a 3D object—like a wireframe sculpture. It forms the structural backbone of digital models used in games, animation, simulations, and 3D avatars. Common file formats include .obj, .ply, and .glb. For example, a human face mesh may consist of thousands of vertices and triangular faces to capture fine geometric detail.&lt;/p&gt;
+
+&lt;p&gt;The FLAME [1] model (Faces Learned with an Articulated Model and Expressions) is a widely used parametric 3D head mesh model designed for realistic facial animation. It represents the face with 5023 vertices and 9976 triangles, controlled by identity, expression, and pose parameters. FLAME uses linear blend skinning (LBS) and blendshapes for expressive deformation, making it compact and efficient for applications like 3D avatars, facial reenactment, and neural rendering from 2D images or videos.&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+  &lt;img src=&quot;images/post002_flame_head.png&quot; alt=&quot;Nearest Neighbor Distance Comparison&quot; width=&quot;50%&quot; /&gt;
+&lt;p&gt;&lt;em&gt;Figure 1: FLAME head mesh with different poses.[2]&lt;/em&gt;&lt;/p&gt;  
+&lt;/div&gt;
+
+&lt;h3 id=&quot;what-is-uv-mapping&quot;&gt;What Is UV Mapping?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;UV mapping&lt;/strong&gt; is a 2D representation of a 3D surface used for texture mapping. Think of it as creating a flat blueprint of a curved 3D object—like unfolding a globe into a world map or unwrapping a chocolate bar to see its flat wrapper layout.&lt;/p&gt;
+
+&lt;h4 id=&quot;understanding-u-and-v-coordinates&quot;&gt;Understanding U and V Coordinates&lt;/h4&gt;
+
+&lt;p&gt;The letters &lt;strong&gt;U&lt;/strong&gt; and &lt;strong&gt;V&lt;/strong&gt; represent 2D coordinates in texture space, similar to how &lt;strong&gt;X&lt;/strong&gt; and &lt;strong&gt;Y&lt;/strong&gt; work in regular 2D graphics:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;U&lt;/strong&gt; corresponds to the horizontal axis (0 to 1, left to right)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;V&lt;/strong&gt; corresponds to the vertical axis (0 to 1, bottom to top)&lt;/li&gt;
+  &lt;li&gt;These coordinates are completely independent from the 3D &lt;strong&gt;XYZ&lt;/strong&gt; coordinates of the mesh&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;the-chocolate-bar-analogy&quot;&gt;The Chocolate Bar Analogy&lt;/h4&gt;
+
+&lt;p&gt;Imagine unwrapping a chocolate bar:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;3D Object&lt;/strong&gt;: The wrapped chocolate bar has a complex curved surface&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;UV Map&lt;/strong&gt;: When you carefully unfold the wrapper, you get a flat 2D layout&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Texture Mapping&lt;/strong&gt;: The printed design on the wrapper (logos, text, patterns) corresponds to how textures are applied to the 3D surface&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This unwrapping process is exactly what UV mapping does—it takes the complex 3D surface and “unfolds” it into a flat 2D space where textures can be painted or applied.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-uv-coordinates&quot;&gt;Why UV Coordinates?&lt;/h4&gt;
+
+&lt;p&gt;UV coordinates are normalized (0 to 1 range), making them resolution-independent. Whether your texture is 256×256 pixels or 4096×4096 pixels, the same UV coordinates will work perfectly.&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+  &lt;img src=&quot;images/post002_flame_uv_wireframe.png&quot; alt=&quot;Nearest Neighbor Distance Comparison&quot; width=&quot;50%&quot; /&gt;
+&lt;p&gt;&lt;em&gt;Figure 2: UV MAP of FLAME.&lt;/em&gt;&lt;/p&gt;  
+&lt;/div&gt;
+
+&lt;h3 id=&quot;how-flame-mesh-and-uv-map-work-together&quot;&gt;How FLAME Mesh and UV Map Work Together&lt;/h3&gt;
+
+&lt;p&gt;The FLAME model provides a 3D mesh of the human head, defined by &lt;strong&gt;5023 vertices&lt;/strong&gt; and &lt;strong&gt;9976 triangular faces&lt;/strong&gt;, while the pre-calculated UV map offers a 2D representation of that mesh surface. The &lt;strong&gt;matching&lt;/strong&gt; between the FLAME mesh and its UV map is defined by a &lt;strong&gt;per-vertex correspondence&lt;/strong&gt;, where each vertex in 3D space has an associated &lt;strong&gt;(u, v)&lt;/strong&gt; coordinate in 2D UV space.&lt;/p&gt;
+
+&lt;p&gt;Here’s how the matching works:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Each triangle in the FLAME mesh consists of 3 vertices indexed in 3D space.&lt;/li&gt;
+  &lt;li&gt;The same triangle has corresponding UV coordinates for those 3 vertices in 2D.&lt;/li&gt;
+  &lt;li&gt;When rendering or texturing, the &lt;strong&gt;3D triangle&lt;/strong&gt; is mapped to its &lt;strong&gt;2D counterpart&lt;/strong&gt; using these UV coordinates.&lt;/li&gt;
+  &lt;li&gt;This mapping allows a 2D texture image to wrap seamlessly over the 3D mesh surface.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In practice, you often have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A &lt;strong&gt;vertex list&lt;/strong&gt;: 3D coordinates (x, y, z) for each vertex.&lt;/li&gt;
+  &lt;li&gt;A &lt;strong&gt;face list&lt;/strong&gt;: triplets of vertex indices (defining triangles).&lt;/li&gt;
+  &lt;li&gt;A &lt;strong&gt;UV list&lt;/strong&gt;: (u, v) coordinates per vertex.&lt;/li&gt;
+  &lt;li&gt;A &lt;strong&gt;UV face list&lt;/strong&gt;: triplets of UV indices (corresponding to vertex indices in face list).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, the structure allows the renderer or processing tool to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Match each triangle’s 3D geometry to its corresponding UV triangle.&lt;/li&gt;
+  &lt;li&gt;Sample texture values from the UV space during rendering or neural feature mapping (e.g., in 3DGS or GEM).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;techniques-for-uv-mapping&quot;&gt;Techniques for UV Mapping&lt;/h3&gt;
+
+&lt;p&gt;UV mapping can be done manually using tools like Blender or Maya for precise control, or automatically for faster results. Good UV maps minimize distortion and avoid stretching by carefully placing seams and organizing UV islands. Clean mapping is key for accurate texture placement and visual quality.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-uv-mapping-matters&quot;&gt;Why UV Mapping Matters&lt;/h3&gt;
+
+&lt;p&gt;UV mapping is essential for applying textures, PBR materials, baked normals, and lightmaps, enabling detailed and stylized 3D visuals. It also plays a key role in neural rendering, such as mapping 3D Gaussians onto UV space for efficient and high-fidelity avatar synthesis.&lt;/p&gt;
+
+&lt;h3 id=&quot;tools-and-code-snippets&quot;&gt;Tools and Code Snippets&lt;/h3&gt;
+
+&lt;p&gt;Tools like Trimesh and Open3D allow easy access to mesh geometry and UV coordinates in code. You can use them to load meshes, extract UVs, and sample points on the UV map for tasks like texture transfer or feature alignment. Advanced techniques like Poisson disk sampling on the UV map enable uniform point distribution, useful for generative models and neural rendering pipelines.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Mesh and UV mapping form the foundation of 3D graphics, enabling detailed geometry and rich texture placement across digital models. Whether you’re working on games, films, or avatars, mastering these concepts is essential. Try loading a simple mesh and unwrapping it yourself to see how UVs bring textures to life—tools like Blender or code notebooks make it easy to get started.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;p&gt;[1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. “Learning a model of facial shape and expression from 4D scans.” ACM Trans. Graph. 2017.
+[2] https://github.com/TimoBolkart/FLAME-Universe&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Placing Gaussians Splats On Mesh Surface</title>
+   <link href="http://localhost:4000/placing-gaussians-splats-on-mesh-surface"/>
    <updated>2025-07-03T00:00:00+03:00</updated>
-   <id>http://localhost:4000/Placing-Gaussians-on-Mesh-Surface</id>
+   <id>http://localhost:4000/Placing-Gaussians-Splats-on-Mesh-Surface</id>
    <content type="html">&lt;!-- ## Placing Gaussians on Mesh Surface --&gt;
 
 &lt;p&gt;In recent years, 3D Gaussian Splatting (GS) has emerged as a powerful technique for photorealistic avatar rendering and animation. Optimizing Gaussian splats without any geometric prior is challenging, as they often fail to regress accurate geometry. However, when the geometry of the object is known, fitting a mesh in advance and using its surface as a geometric prior provides a significant advantage. For example, if the object to be reconstructed is a human head, leveraging the FLAME mesh model as a geometric prior can greatly improve results.&lt;/p&gt;
