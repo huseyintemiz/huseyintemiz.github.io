@@ -2,7 +2,7 @@
 
 In this post, we explore how to recover the 3D geometry of a human face using the FLAME model [1]. FLAME is a parametric 3D face model trained on a large dataset of diverse human faces. It represents faces with a compact set of coefficients for identity, expressions, and head pose, making face reconstruction a problem of regressing the right parameters rather than building a mesh from scratch. This approach is both versatile and robust, capable of capturing fine variations efficiently.
 
-We focus on single-image fitting with FLAME, using the open-source [flame-head-tracker](https://github.com/PeizhiYan/flame-head-tracker) [3] codebase. This repository provides a modular pipeline for both video-based tracking and single-image fitting. Our discussion centers on fitting the FLAME model to recover a 3D representation from a single unconstrained image.
+We focus on single-image fitting with FLAME, using the open-source <a href="https://github.com/PeizhiYan/flame-head-tracker" style="color: #4682B4;">flame-head-tracker</a> [3] codebase. This repository provides a modular pipeline for both video-based tracking and single-image fitting. Our discussion centers on fitting the FLAME model to recover a 3D representation from a single unconstrained image.
 
 <!-- todo: resim degisecek -->
 <div align="center">
@@ -196,11 +196,11 @@ By combining parametric priors with modern optimization and learning techniques,
 
 [1] Li, Tianye, Timo Bolkart, Michael J. Black, Hao Li, and Javier Romero. "Learning a model of facial shape and expression from 4D scans." ACM Trans. Graph. 2017.
 
-[2] https://github.com/TimoBolkart/FLAME-Universe
+[2] <a href="https://github.com/TimoBolkart/FLAME-Universe" style="color: #4682B4;">https://github.com/TimoBolkart/FLAME-Universe</a>
 
-[3] https://github.com/PeizhiYan/flame-head-tracker
+[3] <a href="https://github.com/PeizhiYan/flame-head-tracker" style="color: #4682B4;">https://github.com/PeizhiYan/flame-head-tracker</a>
 
-[4] https://github.com/huseyintemiz/flame-head-tracker (my fork with educational materials)
+[4] <a href="https://github.com/huseyintemiz/flame-head-tracker" style="color: #4682B4;">https://github.com/huseyintemiz/flame-head-tracker</a> (my fork with educational materials)
 
 [5] DECA: Feng, Yao, Haiwen Feng, Michael J. Black, and Timo Bolkart. "Learning an Animatable Detailed 3D Face Model from In-The-Wild Images." ACM Transactions on Graphics (Proc. SIGGRAPH), vol. 40, no. 8, 2021.
 
